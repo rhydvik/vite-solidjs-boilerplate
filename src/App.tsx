@@ -1,17 +1,15 @@
-import type { Component } from 'solid-js';
-import { Router, Route, Routes } from "@solidjs/router"
-import { Home, Offices } from './views';
+import { Router, Route, Routes } from "@solidjs/router";
+import { Home, Offices } from "./views";
 
-
-const App: Component = () => {
+function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" component={Home} />
-        <Route path="/offices" component={Offices} /> 
+        <Route path="/offices" component={Offices} />
       </Routes>
     </Router>
   );
-};
+}
 
 export default App;
