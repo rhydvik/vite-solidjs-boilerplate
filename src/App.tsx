@@ -1,5 +1,6 @@
-import { Router, Route, Routes } from "@solidjs/router";
-import { Home, Offices } from "./views";
+import { Router, Route, Routes } from '@solidjs/router';
+
+import { Home, Offices } from './views';
 
 function App() {
   return (

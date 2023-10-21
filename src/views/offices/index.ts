@@ -12,11 +12,11 @@
  * 4 To give them resources to make them understand the code, that eliminates the need of multiple KT
  * gives developer perspective to understand the that is present per feature explain about te core logic of the flow
  */
-import { lazy, JSX } from "solid-js";
+import { lazy, JSX } from 'solid-js';
 
 // below will load office when we go to office route
 const Offices = lazy(
-  () => import("./Offices") as Promise<{ default: () => JSX.Element }>,
+  () => import('./Offices') as Promise<{ default: () => JSX.Element }>,
 );
 
 export { Offices };

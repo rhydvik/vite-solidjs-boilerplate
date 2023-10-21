@@ -3,7 +3,7 @@
         "browser": true,
         "es2021": true
     },
-    "parser": "@typescript-eslint/parser", // if not already added
+    "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint", "prettier", "import"],
     "extends": [
         "plugin:@typescript-eslint/recommended",
@@ -14,10 +14,32 @@
         "sourceType": "module"
     },
     "rules": {
-        "prettier/prettier": "error",
-//        "quotes": ["error", "single"],
-        "@typescript-eslint/explicit-module-boundary-types": "off", // This can be too strict in some scenarios
+        "prettier/prettier": ["error", { "singleQuote": true }],
+        "quotes": ["error", "single"],
+        "no-console": "error",
+        "no-debugger": "error",
+        "no-alert": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "no-useless-rename": "error",
+        "no-duplicate-imports": "error",
+        "no-useless-constructor": "error",
+        "no-useless-computed-key": "error",
+        "no-useless-concat": "error",
+        "no-useless-return": "error",
+        "no-else-return": "error",
+        "no-empty-function": "error",
+        "no-empty-pattern": "error",
+        "no-lone-blocks": "error",
+        "no-multi-spaces": "error",
+        "no-multiple-empty-lines": "error",
+        "no-unneeded-ternary": "error",
+        "no-whitespace-before-property": "error",
+        "no-trailing-spaces": "error",
+        "no-use-before-define": "error",
+        "no-useless-call": "error",
         "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
@@ -27,10 +49,21 @@
                 "ts": "never",
                 "tsx": "never"
             }
-        ]
+        ],
+        "import/order": ["error", {
+            "groups": [["builtin", "external", "internal"], ["parent", "sibling", "index"]],
+            "newlines-between": "always"
+        }],
+        "import/no-unused-modules": "error",
+        "require-await": "error",
+        "no-return-await": "error",
+        "complexity": ["error", { "max": 10 }],
+        "max-depth": ["error", 3],
+        "space-in-parens": ["error", "never"],
+        "space-infix-ops": "error",
+        "require-atomic-updates": "error"
     },
     "settings": {
-        "import/extensions": ["error", "always"],
         "import/resolver": {
             "node": {
                 "extensions": [".js", ".jsx", ".ts", ".tsx"]
