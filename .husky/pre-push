@@ -1,0 +1,38 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# ESLint check
+npx eslint .
+
+# Prettier check
+npx prettier --check .
+
+# TypeScript check (assuming you use TypeScript)
+npx tsc --noEmit
+
+# Check for large files
+git diff --staged --name-only | while read FILE; do
+    if [ $(git ls-files --eol -s "$FILE" | cut -f2 | sed 's/-//') -gt 100000 ]; then
+        echo "$FILE is too large!";
+        exit 1;
+    fi
+done
+
+# Check for TODO or FIXME comments
+git diff --cached --name-only | xargs grep --with-filename -n "TODO\|FIXME"
+if [ $? -eq 0 ]; then
+    echo "You have TODO or FIXME comments in your changes!";
+    exit 1;
+fi
+
+# npm audit for security checks
+npm audit
+
+# Check for untracked files
+if ! git diff-files --quiet --ignore-submodules --; then
+    echo "You have unstaged changes!";
+    exit 1;
+fi
+
+# License check
+npx license-checker --summary
