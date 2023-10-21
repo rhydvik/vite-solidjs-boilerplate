@@ -32,3 +32,29 @@ Your app is ready to be deployed!
 ## Deployment
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+
+
+## Directory Structure:
+
+Inside the src directory, structure your folders in a modular fashion:
+
+```folder structure
+src/
+├── assets/              # Static assets like images, fonts, etc.
+├── components/          # Reusable components
+├── hooks/               # Custom hooks
+├── lib/                 # Utilities and libraries
+├── routes/              # Components specific to routes or pages
+├── store/               # State management related logic
+├── App.tsx              # Main App component
+└── index.tsx            # Entry point where you render the App component
+```
+
+2. State Management:
+```folder structure
+store/
+├── userStore.ts         # Example store for user-related data and actions
+├── todoStore.ts         # Example store for todo-related data and actions
+└── index.ts             # Consolidate all stores for easy importing
+```
+3.
