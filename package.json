@@ -9,6 +9,17 @@
     "serve": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   },
+  "lint-staged": {
+    "*.ts?(x)": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+  },
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.8.0",
@@ -21,6 +32,8 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-solid": "^0.13.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "solid-devtools": "^0.27.3",
     "typescript": "^5.2.2",
