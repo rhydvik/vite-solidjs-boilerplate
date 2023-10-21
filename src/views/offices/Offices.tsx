@@ -1,3 +1,9 @@
+import { Header } from '../../components';
+
 export default function Offices() {
-  return <div>Offices</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
