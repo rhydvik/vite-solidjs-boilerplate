@@ -4,8 +4,7 @@ const Header = () => (
   <header>
     <nav>
       <A href="/">Home</A>
-      <A href="/about">About</A>
-      <A href="/contact">Contact</A>
+      <A href="/offices">Contact</A>
     </nav>
   </header>
 );
