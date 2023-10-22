@@ -7,7 +7,7 @@ export type ButtonProps = {
 function Button(props: ButtonProps) {
   return (
     <button>
-      <div>{props.children}</div>
+      <div style={{ border: '1px solid red' }}>{props.children}</div>
     </button>
   );
 }
