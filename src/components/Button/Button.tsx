@@ -4,6 +4,7 @@ export type ButtonProps = {
   class: string;
   children: JSX.Element;
 };
+
 function Button(props: ButtonProps) {
   return (
     <button>
