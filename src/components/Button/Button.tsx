@@ -1,12 +1,12 @@
 import { JSX } from 'solid-js';
 
-type ButtonProps = {
+export type ButtonProps = {
   class: string;
   children: JSX.Element;
 };
 function Button(props: ButtonProps) {
   return (
-    <button class={props.class}>
+    <button>
       <div>{props.children}</div>
     </button>
   );
