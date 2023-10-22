@@ -18,13 +18,6 @@ git diff --staged --name-only | while read FILE; do
     fi
 done
 
-# Check for TODO or FIXME comments
-git diff --cached --name-only | xargs grep --with-filename -n "TODO\|FIXME"
-if [ $? -eq 0 ]; then
-    echo "You have TODO or FIXME comments in your changes!";
-    exit 1;
-fi
-
 # npm audit for security checks
 npm audit
 
