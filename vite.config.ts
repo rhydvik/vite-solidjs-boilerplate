@@ -12,7 +12,11 @@ export default defineConfig({
     */
     // devtools(),
     solidPlugin(),
-    eslintPlugin(),
+    eslintPlugin({
+      cache: false,
+      // include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js'], // adjust as per your project structure
+      exclude: ['node_modules', '/virtual:/'],
+    }),
   ],
   server: {
     port: 3000,
