@@ -1,15 +1,16 @@
-import { JSX } from 'solid-js';
+import { Button as SButton } from '@suid/material';
 
 export type ButtonProps = {
   class: string;
-  children: JSX.Element;
+  variant: 'contained' | 'outlined' | 'text';
+  label: string;
 };
 
-function Button(props: ButtonProps) {
+function Button({ variant, label }: ButtonProps) {
   return (
-    <button>
-      <div style={{ border: '1px solid red' }}>{props.children}</div>
-    </button>
+    <SButton variant={variant}>
+      <div>{label}</div>
+    </SButton>
   );
 }
 

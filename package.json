@@ -8,7 +8,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "storybook": "storybook dev -p 6006",
+    "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "lint-staged": {
@@ -53,13 +53,16 @@
     "storybook-solidjs": "^1.0.0-beta.2",
     "storybook-solidjs-vite": "^1.0.0-beta.2",
     "typescript": "^5.2.2",
-    "vite": "^4.3.9",
+    "vite": "^4.5.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-solid": "^2.7.0"
+    "vite-plugin-solid": "^2.7.2"
   },
   "dependencies": {
     "@solidjs/router": "^0.8.3",
     "@storybook/html": "^7.5.1",
+    "@suid/icons-material": "^0.6.11",
+    "@suid/material": "^0.15.1",
+    "@suid/vite-plugin": "^0.1.5",
     "solid-js": "^1.7.6"
   }
 }

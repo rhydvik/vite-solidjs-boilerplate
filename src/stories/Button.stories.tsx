@@ -15,12 +15,12 @@ const Template: (
 // Create the actual stories
 export const Primary = Template.bind({});
 Primary.args = {
-  class: 'primary',
-  children: <>Primary Button</>,
+  variant: 'contained',
+  label: 'Primary Button',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  class: 'secondary',
-  children: <>Secondary Button</>,
+  variant: 'text',
+  label: 'Secondary Button',
 };
