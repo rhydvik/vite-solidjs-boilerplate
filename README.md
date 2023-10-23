@@ -4,6 +4,7 @@ Welcome to the SolidJS project! This README serves as a comprehensive guide to t
 # 📖 Table of Contents
 - [Solid with Vite](https://github.com/solidjs/vite-plugin-solid)
 - [Solid Router](https://docs.solidjs.com/guides/how-to-guides/routing-in-solid/solid-router)
+- [SUID - A port of Material-UI (MUI) built with SolidJS.](https://suid.io/getting-started/installation) 
 - [ESLint and Prettier Configuration]()
 - [Husky Hooks]()
 - [Storybook]()
