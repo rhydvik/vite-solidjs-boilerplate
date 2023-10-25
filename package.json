@@ -17,12 +17,6 @@
       "eslint --fix"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run build"
-    }
-  },
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
