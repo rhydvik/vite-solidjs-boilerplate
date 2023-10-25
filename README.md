@@ -24,7 +24,7 @@ Welcome to the SolidJS project! This README serves as a comprehensive guide to t
 - [Running the app]()
 - [Test]()
 - [Project Development Guide]()
-
+- [React ➡️ Solid - Easy convertors to see how react code will look in SolidJs](https://suid.io/tools/react-to-solid)
 
 
 ### Learn more on the [Solid Website](https://solidjs.com)
