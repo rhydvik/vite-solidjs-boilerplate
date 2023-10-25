@@ -19,4 +19,7 @@ const Offices = lazy(
   () => import('./Offices') as Promise<{ default: () => JSX.Element }>,
 );
 
-export { Offices };
+export const OfficeRoute = {
+  path: '/offices',
+  component: Offices,
+};
