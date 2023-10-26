@@ -1,0 +1,83 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "prettier", "import"],
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json" // Point to your tsconfig.json file
+    },
+    "rules": {
+        "prettier/prettier": ["error", { "singleQuote": true }],
+        "quotes": ["error", "single"],
+        "no-console": "error",
+        "no-debugger": "error",
+        "no-alert": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "no-useless-rename": "error",
+        "no-duplicate-imports": "error",
+        "no-useless-constructor": "error",
+        "no-useless-computed-key": "error",
+        "no-useless-concat": "error",
+        "no-useless-return": "error",
+        "no-else-return": "error",
+        "no-empty-function": "error",
+        "no-empty-pattern": "error",
+        "no-lone-blocks": "error",
+        "no-multi-spaces": "error",
+        "no-multiple-empty-lines": "error",
+        "no-unneeded-ternary": "error",
+        "no-whitespace-before-property": "error",
+        "no-trailing-spaces": "error",
+        "no-use-before-define": "error",
+        "no-useless-call": "error",
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "import/order": ["error", {
+            "groups": [["builtin", "external", "internal"], ["parent", "sibling", "index"]],
+            "newlines-between": "always"
+        }],
+        "import/no-unused-modules": "error",
+        "require-await": "error",
+        "no-return-await": "error",
+        "complexity": ["error", { "max": 10 }],
+        "max-depth": ["error", 3],
+        "space-in-parens": ["error", "never"],
+        "space-infix-ops": "error",
+        "require-atomic-updates": "error",
+        "@typescript-eslint/strict-boolean-expressions": "error",         // Disallows using non-boolean values as conditions
+        "@typescript-eslint/no-floating-promises": "error",               // Requires Promise-like values to be handled appropriately
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",      // Disallows unnecessary type assertions
+        "@typescript-eslint/no-unnecessary-condition": "error",           // Disallows unnecessary conditions - this rule uses type information
+        "@typescript-eslint/no-unsafe-call": "error",                     // Disallows calling an any type value
+        "@typescript-eslint/no-unsafe-return": "error",                   // Disallows returning any from a function
+        "@typescript-eslint/no-unsafe-member-access": "error",            // Disallows member access on any typed variables
+        "@typescript-eslint/no-unsafe-assignment": "error",               // Disallows assigning any to variables and properties
+        "@typescript-eslint/no-unsafe-argument": "error"                  // Disallows calling an any type value
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    }
+}
