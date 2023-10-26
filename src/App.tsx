@@ -1,14 +1,14 @@
-import { Router, Route, Routes } from '@solidjs/router';
+import { Router, useRoutes } from '@solidjs/router';
 
-import { Home, Offices } from './views';
+import { HomeRoute, OfficeRoute } from './views';
+
+const routes = [HomeRoute, OfficeRoute];
 
 function App() {
+  const RoutesComponent = useRoutes(routes);
   return (
     <Router>
-      <Routes>
-        <Route path="/" component={Home} />
-        <Route path="/offices" component={Offices} />
-      </Routes>
+      <RoutesComponent />
     </Router>
   );
 }

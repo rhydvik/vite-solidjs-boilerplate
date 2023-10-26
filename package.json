@@ -9,18 +9,13 @@
     "serve": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-sb": "storybook build"
   },
   "lint-staged": {
     "*.ts?(x)": [
       "prettier --write",
       "eslint --fix"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "license": "MIT",
   "devDependencies": {

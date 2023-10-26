@@ -1,3 +1,6 @@
 import Home from './Home';
 
-export { Home };
+export const HomeRoute = {
+  path: '/',
+  component: Home,
+};
