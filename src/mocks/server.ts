@@ -1,9 +1,11 @@
 import { createServer, Model } from 'miragejs';
 
+const OfficeModel = Model.extend({});
+
 export function makeServer() {
   return createServer({
     models: {
-      office: Model,
+      office: OfficeModel,
     },
 
     seeds(server) {
