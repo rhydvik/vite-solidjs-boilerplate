@@ -1,6 +1,5 @@
 import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
-import { AxiosResponse } from 'axios';
 
 import { printLog } from '../../utils/utils';
 
@@ -10,31 +9,37 @@ type Office = {
 };
 
 export default function Offices() {
-  // const [data, setData] = createSignal<Office[]>([]);
-  // const [error, setError] = createSignal({ message: 'some' });
+  const [data, setData] = createSignal<Office[]>([]);
   const [loading, setLoading] = createSignal(true);
 
-  createEffect(async () => {
+  async function fetchData() {
     try {
-      const response = await fetch('/api/data');
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const result: AxiosResponse<Office[]> = await response.json();
-      printLog(result);
-      // setData(result);
+      const response = await fetch('/api/offices');
+      const result = (await response.json()) as { offices: Office[] | [] };
+      setData(result.offices);
       setLoading(false);
     } catch (err) {
-      // setError(err);
+      printLog('Error fetching data', err);
       setLoading(false);
     }
+  }
+
+  createEffect(async () => {
+    await fetchData();
   });
 
-  if (loading()) return <div>Loading...</div>;
-  // if (error()) return <div>Error: {error().message}</div>;
-
+  printLog(loading());
+  printLog(data());
   return (
     <div>
       <h1>Offices</h1>
       <A href="/">Home</A>
+      {loading() && <p>Loading...</p>}
+      <ul>
+        {data().map((item) => {
+          return <li>{item.name}</li>;
+        })}
+      </ul>
     </div>
   );
 }

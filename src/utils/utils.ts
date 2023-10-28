@@ -1,5 +1,5 @@
 export function printLog(
-  message: string | Record<string, unknown>,
+  message: string | boolean | undefined | null | Record<string, unknown>,
   other: Record<string, unknown> = {},
   ...rest: Record<string, unknown>[]
 ) {
