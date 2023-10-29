@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.8.3",
+    "@storybook/addon-designs": "^7.0.5",
     "@storybook/html": "^7.5.1",
     "@suid/icons-material": "^0.6.11",
     "@suid/material": "^0.15.1",

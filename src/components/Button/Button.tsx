@@ -1,14 +1,15 @@
 import { Button as SButton } from '@suid/material';
 
-export type ButtonProps = {
-  class: string;
+export type Props = {
+  class?: string;
   variant: 'contained' | 'outlined' | 'text';
   label: string;
+  sx?: unknown;
 };
 
-function Button({ variant, label }: ButtonProps) {
+function Button({ variant, label, sx }: Props) {
   return (
-    <SButton variant={variant}>
+    <SButton variant={variant} sx={sx}>
       <div>{label}</div>
     </SButton>
   );
