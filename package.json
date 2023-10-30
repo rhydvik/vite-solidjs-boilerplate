@@ -26,6 +26,7 @@
     "@storybook/addon-links": "^7.5.1",
     "@storybook/blocks": "^7.5.1",
     "@storybook/testing-library": "^0.2.2",
+    "@types/axios": "^0.14.0",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "eslint": "^8.52.0",
@@ -54,10 +55,16 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.8.3",
+    "@storybook/addon-designs": "^7.0.5",
     "@storybook/html": "^7.5.1",
     "@suid/icons-material": "^0.6.11",
     "@suid/material": "^0.15.1",
     "@suid/vite-plugin": "^0.1.5",
+    "axios": "^1.6.0",
+    "faker": "^6.6.6",
+    "fp-ts": "^2.16.1",
+    "io-ts": "^2.2.20",
+    "miragejs": "^0.1.47",
     "solid-js": "^1.7.6"
   }
 }
