@@ -36,7 +36,12 @@ export default function BasicModal({ open, title, handleClose }: ModalProps) {
           Left aligned contextual description for modal.
         </Typography>
         <Box sx={{ justifyContent: 'flex-end', display: 'flex', mt: 2 }}>
-          <Button sx={{ mr: 2 }} variant="outlined" label="CLOSE" />
+          <Button
+            sx={{ mr: 2 }}
+            variant="outlined"
+            label="CLOSE"
+            onClick={handleClose}
+          />
           <Button variant="contained" label="SUBMIT" />
         </Box>
       </Box>
