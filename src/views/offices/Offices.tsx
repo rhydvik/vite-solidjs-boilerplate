@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
-import { BasicModal } from '../../components';
+import { BasicModal, Button } from '../../components';
 
 type Office = {
   name: string;
@@ -44,6 +44,7 @@ export default function Offices() {
           return <li>{item.name}</li>;
         })}
       </ul>
+      <Button variant="outlined" label="Open Model" />
       <BasicModal open={true} title="Modal Title" />
     </div>
   );
