@@ -10,7 +10,7 @@ export type Props = {
 function Button({ variant, label, sx }: Props) {
   return (
     <SButton variant={variant} sx={sx}>
-      <div>test{label}</div>
+      <div>{label}</div>
     </SButton>
   );
 }

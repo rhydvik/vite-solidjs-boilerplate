@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build",
-    "test": "vitest"
+    "test": "vitest --watch=false"
   },
   "lint-staged": {
     "*.ts?(x)": [
