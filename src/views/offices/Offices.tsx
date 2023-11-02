@@ -11,6 +11,8 @@ export default function Offices() {
   // if (loading()) {
   //   return <p>Loading...</p>;
   // }
+  const { fetchAndSetOffices, officesStore: { offices, isLoading } } = OfficeState;
+
   onMount(() => {
     OfficeState.fetchAndSetOffices();
   });
@@ -19,9 +21,9 @@ export default function Offices() {
     <div>
       <h1>Offices</h1>
       <A href="/">Home</A>
-      {OfficeState.officesStore.isLoading && <p>Loading...</p>}
+      {isLoading && <p>Loading...</p>}
       <ul>
-        {OfficeState.officesStore.offices.map((item:any) => {
+        {offices.map((item:any) => {
           return <li>{item.name}</li>;
         })}
       </ul>
