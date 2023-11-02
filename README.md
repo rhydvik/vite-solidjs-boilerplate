@@ -309,6 +309,50 @@ $ npm install # or pnpm install or yarn install
 
 ##### [Emojis](https://gist.github.com/roachhd/1f029bd4b50b8a524f3c) are taken from here, please use them in commit messages if needed
 
+# <img src="https://playwright.dev/img/playwright-logo.svg" alt="Alt text" width="35" height="35"/> Setting up Playwright
+To integrate Playwright into your project, follow these steps:
+
+### Install Playwright via npm:
+```bash
+npm i -D playwright
+```
+After installation, you can create a test file with a .spec.ts extension.
+
+### Writing Your First Test
+Create a file named example.spec.js in your test directory and add the following code:
+
+
+```javascript
+const { test, expect } = require('@playwright/test');
+
+test('example test', async ({ page }) => {
+// Go to the starting URL.
+await page.goto('https://example.com');
+
+// Assert that the title is correct.
+await expect(page).toHaveTitle(/Example Domain/);
+});
+```
+
+This simple test checks that when navigating to "https://example.com", the title of the page matches "Example Domain".
+
+### Running Tests
+```bash
+# Execute your tests by running the following command:
+npx playwright test
+```
+
+You can also run tests for a specific browser:
+
+```bash
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
+```
+
+For more advanced use cases, refer to the [Playwright]() documentation.
+
+
 ## 📢 Final Words
 🌟 Let's build something amazing! <br />
 😎 If you write one line a day write it in best possible way so that you don't have to come back to it again and again.<br />
