@@ -1,33 +1,34 @@
 /* eslint-disable  */
 import { A } from '@solidjs/router';
-import { createEffect, onMount } from 'solid-js';
+import { createEffect, createSignal, onMount } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
 import { BasicModal } from '../../components';
 import { OfficeState } from '../../store';
 export default function Offices() {
-  
+  const [showModal, setShowModal] = createSignal(false);
   // this kind of conditions messes up with solid reactivity
   // if (loading()) {
   //   return <p>Loading...</p>;
   // }
-  const { fetchAndSetOffices, officesStore: { offices, isLoading } } = OfficeState;
+  //Destucturing not possible as the function does not update for solid Js 
+  const { fetchAndSetOffices } = OfficeState;
 
   onMount(() => {
-    OfficeState.fetchAndSetOffices();
+    fetchAndSetOffices();
   });
 
   return (
     <div>
       <h1>Offices</h1>
       <A href="/">Home</A>
-      {isLoading && <p>Loading...</p>}
+      {OfficeState.officesStore.isLoading && <p>Loading...</p>}
       <ul>
-        {offices.map((item:any) => {
+        {OfficeState.officesStore.offices.map((item:any) => {
           return <li>{item.name}</li>;
         })}
       </ul>
-      <BasicModal open={true} title="Modal Title" />
+      <BasicModal open={showModal()} title="Modal Title" handleClose={() => setShowModal(false)}/>
     </div>
   );
 }
