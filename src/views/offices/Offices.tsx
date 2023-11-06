@@ -1,5 +1,5 @@
 /* eslint-disable  */
-import { A } from '@solidjs/router';
+import { A, Link } from '@solidjs/router';
 import { createEffect, createSignal, onMount } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
@@ -28,6 +28,7 @@ export default function Offices() {
           return <li>{item.name}</li>;
         })}
       </ul>
+      <Link href="/">Home</Link>
       <BasicModal open={showModal()} title="Modal Title" handleClose={() => setShowModal(false)}/>
     </div>
   );
