@@ -1,13 +1,14 @@
 import { Link } from '@solidjs/router';
 
+import { Layout } from '../../layouts/Main';
+
 const Home = () => {
   return (
-    <div>
-      {process.env.ENV}
+    <Layout>
       <p> This is a typescript component </p>
       <Link href="/offices">Offices</Link>
       <button>Check this</button>
-    </div>
+    </Layout>
   );
 };
 
