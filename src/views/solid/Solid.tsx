@@ -1,6 +1,8 @@
 /* eslint-disable */
 import { createSignal } from 'solid-js';
-
+import Form1 from './Forms/Form1';
+import { styles } from './Forms/styles';
+import Form2 from './Forms/Form2';
 function validateEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -10,58 +12,14 @@ function validatePhoneNumber(phone: string) {
 }
 
 export default function Solid() {
-  const styles = {
-    container: {
-      display: 'flex',
-      'justify-content': 'center',
-      'align-items': 'center',
-      height: '100vh',
-      'max-width': '100vw',
-      'margin-top': '40px',
-    },
-    addressContainer: {
-      display: 'grid',
-      'grid-template-columns': '1fr 1fr',
-      'grid-gap': '10px',
-      border: '1px solid #ccc',
-      padding: '12px 24px',
-      margin: '12px 0',
-      'border-radius': '5px'
-    },
-    form: {
-      'width': '600px',
-      margin: '0 auto',
-      padding: '20px',
-      border: '1px solid #ccc',
-      'border-radius': '8px',
-      'background-color': '#f5f5f5',
-    },
-    label: {
-      display: 'block',
-      'margin-bottom': '5px',
-      'font-weight': 'bold',
-    },
-    input: {
-      width: '100%',
-      padding: '8px 2px',
-      margin: '5px 0',
-      'border-radius': '5px',
-      border: '1px solid #ccc',
-    },
-    error: {
-      color: 'red',
-      'font-size': '0.8rem',
-      'margin': '5px 0'
-    },
-    button: {
-      'background-color': 'blue',
-      color: 'white',
-      padding: '10px 15px',
-      'border-radius': '5px',
-      border: 'none',
-      cursor: 'pointer',
-    },
-  };
+  
+  const [socialFields, setSocialFields] = createSignal({
+    linkedin: '',
+    facebook: '',
+    youtube: '',
+    instagram: '',
+    personalWebsite: '',
+  });
 
   const [formData, setFormData] = createSignal({
     firstName: '',
@@ -93,8 +51,9 @@ export default function Solid() {
     phoneNumber: '',
   });
 
+  const [activeForm, setActiveForm] = createSignal(1);
+
   const handleSubmit = (e: any) => {
-    e.preventDefault();
     const {
       firstName,
       lastName,
@@ -129,164 +88,27 @@ export default function Solid() {
             Object.values(error).every((subError) => subError === ''))
       )
     ) {
-      console.log('Form submitted:', formData());
+      setActiveForm(2)
     }
   };
 
   return (
     <div style={{...styles.container, "flex-direction": 'column'}}>
-      <h1>Form</h1>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div>
-          <label html-for="firstName" style={styles.label}>First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            value={formData().firstName}
-            onInput={(e) =>
-              setFormData({ ...formData(), firstName: e.target.value })
-            }
-            style={styles.input}
-          />
-          <p style={styles.error}>{errors().firstName}</p>
+      <div>
+        <div style={styles.tabsContainer}>
+          <div style={{...styles.tab, ...(activeForm() === 1 ? styles.tabActive : {}) }} onClick={() => setActiveForm(1)}>Form 1</div>
+          <div style={{...styles.tab, ...(activeForm() === 2 ? styles.tabActive : {}) }} onClick={() => setActiveForm(2)}>Form 2</div>
         </div>
-        <div>
-          <label html-for="lastName" style={styles.label}>Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            value={formData().lastName}
-            onInput={(e) =>
-              setFormData({ ...formData(), lastName: e.target.value })
-            }
-            style={styles.input}
-          />
-          <p style={styles.error}>{errors().lastName}</p>
-        </div>
-        <div>
-          <label html-for="email" style={styles.label}>Email:</label>
-          <input
-            type="text"
-            id="email"
-            value={formData().email}
-            onInput={(e) => setFormData({ ...formData(), email: e.target.value })}
-            style={styles.input}
-          />
-          <p style={styles.error}>{errors().email}</p>
-        </div>
-        <div style={styles.addressContainer}>
-          <div>
-            <label html-for="address1" style={styles.label}>Address Line 1:</label>
-            <input
-              type="text"
-              id="address1"
-              value={formData().address.address1}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, address1: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.address1}</p>
-          </div>
-          <div>
-            <label html-for="address2" style={styles.label}>Address Line 2:</label>
-            <input
-              type="text"
-              id="address2"
-              value={formData().address.address2}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, address2: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.address2}</p>
-          </div>
-          <div>
-            <label html-for="city" style={styles.label}>City:</label>
-            <input
-              type="text"
-              id="city"
-              value={formData().address.city}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, city: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.city}</p>
-          </div>
-          <div>
-            <label html-for="zip" style={styles.label}>ZIP Code:</label>
-            <input
-              type="text"
-              id="zip"
-              value={formData().address.zip}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, zip: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.zip}</p>
-          </div>
-          <div>
-            <label style={styles.label} html-for="state">State:</label>
-            <input
-              type="text"
-              id="state"
-              value={formData().address.state}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, state: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.state}</p>
-          </div>
-          <div>
-            <label html-for="country" style={styles.label}>Country:</label>
-            <input
-              type="text"
-              id="country"
-              value={formData().address.country}
-              onInput={(e) =>
-                setFormData({
-                  ...formData(),
-                  address: { ...formData().address, country: e.target.value },
-                })
-              }
-              style={styles.input}
-            />
-            <p style={styles.error}>{errors().address.country}</p>
-          </div>
-        </div>
-        <div>
-          <label html-for="phoneNumber" style={styles.label}>Phone Number:</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            value={formData().phoneNumber}
-            onInput={(e) =>
-              setFormData({ ...formData(), phoneNumber: e.target.value })
-            }
-            style={styles.input}
-          />
-          <p style={styles.error}>{errors().phoneNumber}</p>
-        </div>
-        <button type="submit" style={styles.button}>Submit</button>
-      </form>
+        <h1>{`Form ${activeForm()}`}</h1>
+        { activeForm() === 1 ? <Form1 formData={formData} errors={errors} setFormData={setFormData}/> : ''}
+        {
+          activeForm() === 2 ? <Form2 socialFields={socialFields} setSocialFields={setSocialFields}/> : ''
+        }
+      </div>
+      <div style={styles.form}>
+        <button type="button" style={styles.button} onClick={() => setActiveForm(activeForm() === 1 ? 1: activeForm() -1)}>{ activeForm() === 1 ? 'Next' : 'Prev' }</button>
+        <button type="submit" style={{ ...styles.button, float: 'right'}} onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
   );
 }
