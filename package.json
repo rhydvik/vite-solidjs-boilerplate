@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
+    "prepare": "husky install",
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
@@ -10,7 +11,6 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build",
-    "ptest": "playwright test",
     "test": "vitest --watch=false"
   },
   "lint-staged": {
@@ -23,7 +23,6 @@
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
-    "@playwright/test": "^1.39.0",
     "@solidjs/testing-library": "^0.8.4",
     "@storybook/addon-essentials": "^7.5.1",
     "@storybook/addon-interactions": "^7.5.1",
@@ -48,7 +47,6 @@
     "jsdom": "^22.1.0",
     "license-checker": "^25.0.1",
     "lint-staged": "^15.0.2",
-    "playwright": "^1.39.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
@@ -72,9 +70,6 @@
     "@suid/material": "^0.15.1",
     "@suid/vite-plugin": "^0.1.5",
     "axios": "^1.6.0",
-    "faker": "^6.6.6",
-    "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20",
     "miragejs": "^0.1.47",
     "solid-js": "^1.7.6"
   }
