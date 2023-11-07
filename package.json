@@ -1,5 +1,5 @@
 {
-  "name": "vite-template-solid",
+  "name": "atgfr8",
   "version": "0.0.0",
   "description": "",
   "scripts": {
@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "sb": "storybook dev -p 6006",
     "build-sb": "storybook build",
-    "test": "vitest --watch=false"
+    "test": "vitest --watch=false",
+    "ptest": "playwright test"
   },
   "lint-staged": {
     "*.ts?(x)": [
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
+    "@playwright/test": "^1.39.0",
     "@solidjs/testing-library": "^0.8.4",
     "@storybook/addon-essentials": "^7.5.1",
     "@storybook/addon-interactions": "^7.5.1",
@@ -31,6 +33,7 @@
     "@storybook/testing-library": "^0.2.2",
     "@testing-library/jest-dom": "^6.1.4",
     "@types/axios": "^0.14.0",
+    "@types/node": "^20.8.10",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "@typescript-eslint/parser": "^6.8.0",
     "autoprefixer": "^10.4.16",

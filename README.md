@@ -342,6 +342,12 @@ This simple test checks that when navigating to "https://example.com", the title
 npx playwright test
 ```
 
+### Record test cases here
+
+```bash
+ npx playwright codegen
+```
+
 You can also run tests for a specific browser:
 
 ```bash
