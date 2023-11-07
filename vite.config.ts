@@ -17,7 +17,7 @@ export default defineConfig({
     eslintPlugin({
       cache: false,
       // include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js'], // adjust as per your project structure
-      exclude: ['node_modules', '/virtual:/', '**/*.config.ts'],
+      exclude: ['node_modules', '/virtual:/'],
     }),
   ],
   server: {
@@ -27,7 +27,7 @@ export default defineConfig({
     target: 'esnext',
   },
   test: {
-    exclude: ['node_modules', 'playwright', '**/*.config.ts'],
+    exclude: ['node_modules', 'playwright'],
     environment: 'jsdom',
     globals: true,
     testTransformMode: { web: ['/.[jt]sx?$/'] },
