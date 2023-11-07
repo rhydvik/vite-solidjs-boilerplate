@@ -27,9 +27,6 @@ jobs:
       - name: run tests
         run: npm run test
 
-#      - name: run playwright
-#        run: npm run ptest
-
       - name: Build Project
         run: npm run build
 
