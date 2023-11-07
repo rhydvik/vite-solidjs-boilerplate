@@ -18,6 +18,18 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Build StoryBook
+        run: npm run build-sb
+
+      - name: run tests
+        run: npm run test
+
+      - name: run playwright
+        run: npm run ptest
+
       - name: Build Project
         run: npm run build
 
