@@ -5,11 +5,12 @@ export type Props = {
   variant: 'contained' | 'outlined' | 'text';
   label: string;
   sx?: unknown;
+  onClick?: () => void;
 };
 
-function Button({ variant, label, sx }: Props) {
+function Button({ variant, label, sx, onClick }: Props) {
   return (
-    <SButton variant={variant} sx={sx}>
+    <SButton variant={variant} sx={sx} onClick={() => onClick()}>
       <div>{label}</div>
     </SButton>
   );

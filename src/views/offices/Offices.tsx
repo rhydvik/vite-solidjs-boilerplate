@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
-import { BasicModal } from '../../components';
+import { BasicModal, Button } from '../../components';
 
 type Office = {
   name: string;
@@ -12,6 +12,12 @@ type Office = {
 export default function Offices() {
   const [data, setData] = createSignal<Office[]>([]);
   const [loading, setLoading] = createSignal(true);
+  const [showModal, setShowModal] = createSignal(false);
+
+  const toggleModel = () => {
+    printLog('toggleModel');
+    setShowModal(!showModal());
+  };
 
   async function fetchData() {
     try {
@@ -44,7 +50,18 @@ export default function Offices() {
           return <li>{item.name}</li>;
         })}
       </ul>
-      <BasicModal open={true} title="Modal Title" />
+      <Button
+        variant="outlined"
+        label="Open Model"
+        onClick={() => toggleModel()}
+      />
+      {showModal() && (
+        <BasicModal
+          open={true}
+          title="Modal Title"
+          handleClose={() => toggleModel()}
+        />
+      )}
     </div>
   );
 }
