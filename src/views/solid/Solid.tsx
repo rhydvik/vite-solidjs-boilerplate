@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { createSignal } from 'solid-js';
+import { Match, Switch, createSignal } from 'solid-js';
 import Form1 from './Forms/Form1';
 import { styles } from './Forms/styles';
 import Form2 from './Forms/Form2';
@@ -100,10 +100,14 @@ export default function Solid() {
           <div style={{...styles.tab, ...(activeForm() === 2 ? styles.tabActive : {}) }} onClick={() => setActiveForm(2)}>Form 2</div>
         </div>
         <h1>{`Form ${activeForm()}`}</h1>
-        { activeForm() === 1 ? <Form1 formData={formData} errors={errors} setFormData={setFormData}/> : ''}
-        {
-          activeForm() === 2 ? <Form2 socialFields={socialFields} setSocialFields={setSocialFields}/> : ''
-        }
+          <Switch fallback={<div>Form not found</div>}>
+            <Match when={activeForm() === 1}>
+              <Form1 formData={formData} errors={errors} setFormData={setFormData}/>
+            </Match>
+            <Match when={activeForm() === 2}>
+              <Form2 socialFields={socialFields} setSocialFields={setSocialFields}/>
+            </Match>
+        </Switch>
       </div>
       <div style={styles.form}>
         <button type="button" style={styles.button} onClick={() => setActiveForm(activeForm() === 1 ? 1: activeForm() -1)}>{ activeForm() === 1 ? 'Next' : 'Prev' }</button>
