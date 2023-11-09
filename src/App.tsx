@@ -1,8 +1,8 @@
 import { Router, useRoutes } from '@solidjs/router';
 
-import { HomeRoute, OfficeRoute, SolidRoute } from './views';
+import { CarrierRoute, HomeRoute, OfficeRoute, SolidRoute } from './views';
 
-const routes = [HomeRoute, OfficeRoute, SolidRoute];
+const routes = [HomeRoute, OfficeRoute, CarrierRoute, SolidRoute];
 
 function App() {
   const RoutesComponent = useRoutes(routes);

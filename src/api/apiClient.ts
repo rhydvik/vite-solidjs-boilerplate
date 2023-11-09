@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
 } from 'axios';
 
-import { printLog } from '../src/utils/utils';
+import { printLog } from '../utils/utils';
 
 const UNAUTHENTICATED_PATHS = ['/login', '/signup'];
 

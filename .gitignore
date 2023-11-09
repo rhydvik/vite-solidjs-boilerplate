@@ -4,3 +4,8 @@ dist
 .npm
 .vscode
 /storybook-static/
+.env*
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
