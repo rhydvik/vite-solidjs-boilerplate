@@ -3,4 +3,3 @@
 
 npx lint-staged
 npm run test --watchAll=false
-npm run ptest
