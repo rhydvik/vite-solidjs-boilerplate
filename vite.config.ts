@@ -27,6 +27,7 @@ export default defineConfig({
     target: 'esnext',
   },
   test: {
+    exclude: ['node_modules', 'playwright'],
     environment: 'jsdom',
     globals: true,
     testTransformMode: { web: ['/.[jt]sx?$/'] },

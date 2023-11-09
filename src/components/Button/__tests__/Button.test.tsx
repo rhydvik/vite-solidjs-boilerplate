@@ -7,8 +7,8 @@ import { Button } from '../index'; // 👈 this is imported in order to use the 
 describe('Button', () => {
   it('It should show title', () => {
     const { getByText } = render(() => (
-      <Button variant="contained" label="Test button" />
+      <Button variant="contained" label="show" />
     ));
-    expect(getByText('Test button')).toBeInTheDocument();
+    expect(getByText('show')).toBeInTheDocument();
   });
 });
