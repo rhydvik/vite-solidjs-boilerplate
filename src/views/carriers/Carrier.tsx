@@ -8,7 +8,7 @@ import { ConfigManager } from '../../utils/ConigManager';
 const Carriers = () => {
   return (
     <Layout>
-      <Box>
+      <Box class={cls.container}>
         <p class={cls.text}> Carriers</p>
         <Link href="/home">Dashboard</Link>
         API URL: {ConfigManager.apiUrl} <br />
