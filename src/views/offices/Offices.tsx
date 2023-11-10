@@ -35,11 +35,6 @@ export default function Offices() {
     await fetchData();
   });
 
-  // this kind of conditions messes up with solid reactivity
-  // if (loading()) {
-  //   return <p>Loading...</p>;
-  // }
-
   return (
     <div>
       <h1>Offices</h1>
