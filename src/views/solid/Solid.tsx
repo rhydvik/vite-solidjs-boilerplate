@@ -1,8 +1,8 @@
-/* eslint-disable */
-import { Match, Switch, createSignal } from "solid-js";
-import Form1 from "./Forms/Form1";
-import { styles } from "./Forms/styles";
-import Form2 from "./Forms/Form2";
+import { Match, Switch, createSignal } from 'solid-js';
+
+import Form1 from './Forms/Form1';
+import { styles } from './Forms/styles';
+import Form2 from './Forms/Form2';
 function validateEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -13,86 +13,106 @@ function validatePhoneNumber(phone: string) {
 
 export default function Solid() {
   const [socialFields, setSocialFields] = createSignal({
-    linkedin: "",
-    facebook: "",
-    youtube: "",
-    instagram: "",
-    personalWebsite: "",
+    linkedin: '',
+    facebook: '',
+    youtube: '',
+    instagram: '',
+    personalWebsite: '',
   });
 
   const [formData, setFormData] = createSignal({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    email: '',
     address: {
-      city: "",
-      zip: "",
-      state: "",
-      country: "",
-      address1: "",
-      address2: "",
+      city: '',
+      zip: '',
+      state: '',
+      country: '',
+      address1: '',
+      address2: '',
     },
-    phoneNumber: "",
+    phoneNumber: '',
   });
 
   const [errors, setErrors] = createSignal({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    email: '',
     address: {
-      city: "",
-      zip: "",
-      state: "",
-      country: "",
-      address1: "",
-      address2: "",
+      city: '',
+      zip: '',
+      state: '',
+      country: '',
+      address1: '',
+      address2: '',
     },
-    phoneNumber: "",
+    phoneNumber: '',
   });
+
+  type FormData = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    address: {
+      city: string;
+      zip: string;
+      state: string;
+      country: string;
+      address1: string;
+      address2: string;
+    };
+    phoneNumber: string;
+  };
 
   const [activeForm, setActiveForm] = createSignal(1);
 
-  const handleSubmit = (e: any) => {
+  const validateForm = (formData: FormData) => {
     const {
       firstName,
       lastName,
       email,
-      address: { city, zip, state, country, address1, address2 },
+      address: { city, zip, state, country, address1 },
       phoneNumber,
-    } = formData();
+    } = formData;
 
-    const newErrors = {
-      firstName: firstName.trim() === "" ? "First Name is required" : "",
-      lastName: lastName.trim() === "" ? "Last Name is required" : "",
-      email: !validateEmail(email) ? "Valid email is required" : "",
+    const errors = {
+      firstName: firstName.trim() === '' ? 'First Name is required' : '',
+      lastName: lastName.trim() === '' ? 'Last Name is required' : '',
+      email: !validateEmail(email) ? 'Valid email is required' : '',
       address: {
-        city: city.trim() === "" ? "City is required" : "",
-        zip: zip.trim() === "" ? "ZIP Code is required" : "",
-        state: state.trim() === "" ? "State is required" : "",
-        country: country.trim() === "" ? "Country is required" : "",
-        address1: address1.trim() === "" ? "Address Line 1 is required" : "",
-        address2: "",
+        city: city.trim() === '' ? 'City is required' : '',
+        zip: zip.trim() === '' ? 'ZIP Code is required' : '',
+        state: state.trim() === '' ? 'State is required' : '',
+        country: country.trim() === '' ? 'Country is required' : '',
+        address1: address1.trim() === '' ? 'Address Line 1 is required' : '',
+        address2: '',
       },
       phoneNumber: !validatePhoneNumber(phoneNumber)
-        ? "Valid 10-digit phone number is required"
-        : "",
+        ? 'Valid 10-digit phone number is required'
+        : '',
     };
-    setErrors(newErrors);
+    return errors;
+  };
 
-    if (
-      Object.values(newErrors).every(
-        (error) =>
-          typeof error === "string" ||
-          (typeof error === "object" &&
-            Object.values(error).every((subError) => subError === "")),
-      )
-    ) {
+  const handleSubmit = () => {
+    const newErrors = validateForm(formData());
+
+    setErrors(newErrors);
+    const isFormValid = Object.values(newErrors).every(
+      (error) =>
+        typeof error === 'string' ||
+        (typeof error === 'object' &&
+          Object.values(error).every((subError) => subError === '')),
+    );
+
+    if (isFormValid) {
       setActiveForm(2);
     }
   };
 
   return (
-    <div style={{ ...styles.container, "flex-direction": "column" }}>
+    <div style={{ ...styles.container, 'flex-direction': 'column' }}>
       <div>
         <div style={styles.tabsContainer}>
           <div
@@ -139,11 +159,11 @@ export default function Solid() {
             setActiveForm(activeForm() === 1 ? 1 : activeForm() - 1)
           }
         >
-          {activeForm() === 1 ? "Next" : "Prev"}
+          {activeForm() === 1 ? 'Next' : 'Prev'}
         </button>
         <button
           type="submit"
-          style={{ ...styles.button, float: "right" }}
+          style={{ ...styles.button, float: 'right' }}
           onClick={handleSubmit}
         >
           Submit

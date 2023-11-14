@@ -21,7 +21,6 @@ interface Form1Props {
   errors: FormData;
 }
 export const Form1 = (props: Form1Props) => {
-  /*eslint-disable */
   return (
     <form style={styles.form}>
       <div>
