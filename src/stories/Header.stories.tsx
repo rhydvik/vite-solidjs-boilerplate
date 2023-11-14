@@ -11,25 +11,13 @@ export default {
 // Define a template for creating stories
 const Template: (
   args: JSX.Element & { children: JSX.Element },
-) => JSX.Element = (args) => {
+) => JSX.Element = () => {
   return (
     <Router>
-      <Header {...args} />
+      <Header />
     </Router>
   );
 };
 
 // Create the actual stories
 export const Primary = Template.bind({});
-Primary.args = {
-  links: [
-    {
-      path: '/',
-      name: 'Home',
-    },
-    {
-      path: '/users',
-      name: 'Users',
-    },
-  ],
-};
