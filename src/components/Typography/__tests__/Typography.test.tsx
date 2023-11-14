@@ -25,13 +25,10 @@ describe('Typography Component', () => {
     ));
 
     const element = screen.getByText('Custom Styled Text');
-    // expect(element).toHaveStyle(customStyles);
     const elementStyles = window.getComputedStyle(element);
-    // Extract only the styles you want to check
     const relevantStyles = {
       color: elementStyles.color,
       fontSize: elementStyles.fontSize,
-      // Add more styles if needed
     };
     expect(relevantStyles).toMatchObject(customStyles);
   });
