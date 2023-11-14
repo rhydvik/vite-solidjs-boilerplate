@@ -16,11 +16,11 @@ type FormData = {
 };
 
 interface Form1Props {
-  formData: () => FormData;
+  formData: FormData;
   setFormData: (formData: FormData) => void;
-  errors: () => FormData;
+  errors: FormData;
 }
-export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
+export const Form1 = (props: Form1Props) => {
   /*eslint-disable */
   return (
     <form style={styles.form}>
@@ -31,13 +31,13 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
         <input
           type="text"
           id="firstName"
-          value={formData().firstName}
+          value={props.formData.firstName}
           onInput={(e) =>
-            setFormData({ ...formData(), firstName: e.target.value })
+            props.setFormData({ ...props.formData, firstName: e.target.value })
           }
           style={styles.input}
         />
-        <p style={styles.error}>{errors().firstName}</p>
+        <p style={styles.error}>{props.errors.firstName}</p>
       </div>
       <div>
         <label html-for="lastName" style={styles.label}>
@@ -46,13 +46,13 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
         <input
           type="text"
           id="lastName"
-          value={formData().lastName}
+          value={props.formData.lastName}
           onInput={(e) =>
-            setFormData({ ...formData(), lastName: e.target.value })
+            props.setFormData({ ...props.formData, lastName: e.target.value })
           }
           style={styles.input}
         />
-        <p style={styles.error}>{errors().lastName}</p>
+        <p style={styles.error}>{props.errors.lastName}</p>
       </div>
       <div>
         <label html-for="email" style={styles.label}>
@@ -61,11 +61,13 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
         <input
           type="text"
           id="email"
-          value={formData().email}
-          onInput={(e) => setFormData({ ...formData(), email: e.target.value })}
+          value={props.formData.email}
+          onInput={(e) =>
+            props.setFormData({ ...props.formData, email: e.target.value })
+          }
           style={styles.input}
         />
-        <p style={styles.error}>{errors().email}</p>
+        <p style={styles.error}>{props.errors.email}</p>
       </div>
       <div style={styles.addressContainer}>
         <div>
@@ -75,16 +77,19 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="address1"
-            value={formData().address.address1}
+            value={props.formData.address.address1}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, address1: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: {
+                  ...props.formData.address,
+                  address1: e.target.value,
+                },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.address1}</p>
+          <p style={styles.error}>{props.errors.address.address1}</p>
         </div>
         <div>
           <label html-for="address2" style={styles.label}>
@@ -93,16 +98,19 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="address2"
-            value={formData().address.address2}
+            value={props.formData.address.address2}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, address2: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: {
+                  ...props.formData.address,
+                  address2: e.target.value,
+                },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.address2}</p>
+          <p style={styles.error}>{props.errors.address.address2}</p>
         </div>
         <div>
           <label html-for="city" style={styles.label}>
@@ -111,16 +119,16 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="city"
-            value={formData().address.city}
+            value={props.formData.address.city}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, city: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: { ...props.formData.address, city: e.target.value },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.city}</p>
+          <p style={styles.error}>{props.errors.address.city}</p>
         </div>
         <div>
           <label html-for="zip" style={styles.label}>
@@ -129,16 +137,16 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="zip"
-            value={formData().address.zip}
+            value={props.formData.address.zip}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, zip: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: { ...props.formData.address, zip: e.target.value },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.zip}</p>
+          <p style={styles.error}>{props.errors.address.zip}</p>
         </div>
         <div>
           <label style={styles.label} html-for="state">
@@ -147,16 +155,16 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="state"
-            value={formData().address.state}
+            value={props.formData.address.state}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, state: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: { ...props.formData.address, state: e.target.value },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.state}</p>
+          <p style={styles.error}>{props.errors.address.state}</p>
         </div>
         <div>
           <label html-for="country" style={styles.label}>
@@ -165,16 +173,16 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
           <input
             type="text"
             id="country"
-            value={formData().address.country}
+            value={props.formData.address.country}
             onInput={(e) =>
-              setFormData({
-                ...formData(),
-                address: { ...formData().address, country: e.target.value },
+              props.setFormData({
+                ...props.formData,
+                address: { ...props.formData.address, country: e.target.value },
               })
             }
             style={styles.input}
           />
-          <p style={styles.error}>{errors().address.country}</p>
+          <p style={styles.error}>{props.errors.address.country}</p>
         </div>
       </div>
       <div>
@@ -184,13 +192,16 @@ export const Form1 = ({ formData, errors, setFormData }: Form1Props) => {
         <input
           type="text"
           id="phoneNumber"
-          value={formData().phoneNumber}
+          value={props.formData.phoneNumber}
           onInput={(e) =>
-            setFormData({ ...formData(), phoneNumber: e.target.value })
+            props.setFormData({
+              ...props.formData,
+              phoneNumber: e.target.value,
+            })
           }
           style={styles.input}
         />
-        <p style={styles.error}>{errors().phoneNumber}</p>
+        <p style={styles.error}>{props.errors.phoneNumber}</p>
       </div>
     </form>
   );

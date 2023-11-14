@@ -9,11 +9,11 @@ type socialFields = {
 };
 
 interface Form2Props {
-  socialFields: () => socialFields;
+  socialFields: socialFields;
   setSocialFields: (socialFields: socialFields) => void;
 }
 
-const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
+const Form2 = (props: Form2Props) => {
   return (
     <form style={styles.form}>
       <label style={styles.label}>LinkedIn:</label>
@@ -21,9 +21,12 @@ const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
         style={styles.input}
         type="text"
         name="linkedin"
-        value={socialFields().linkedin}
+        value={props.socialFields.linkedin}
         onInput={(e) =>
-          setSocialFields({ ...socialFields(), linkedin: e.target.value })
+          props.setSocialFields({
+            ...props.socialFields,
+            linkedin: e.target.value,
+          })
         }
       />
       <label style={styles.label}>Facebook:</label>
@@ -32,9 +35,12 @@ const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
         style={styles.input}
         type="text"
         name="facebook"
-        value={socialFields().facebook}
+        value={props.socialFields.facebook}
         onInput={(e) =>
-          setSocialFields({ ...socialFields(), facebook: e.target.value })
+          props.setSocialFields({
+            ...props.socialFields,
+            facebook: e.target.value,
+          })
         }
       />
       <label style={styles.label}>YouTube:</label>
@@ -43,9 +49,12 @@ const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
         style={styles.input}
         type="text"
         name="youtube"
-        value={socialFields().youtube}
+        value={props.socialFields.youtube}
         onInput={(e) =>
-          setSocialFields({ ...socialFields(), youtube: e.target.value })
+          props.setSocialFields({
+            ...props.socialFields,
+            youtube: e.target.value,
+          })
         }
       />
       <label style={styles.label}>Instagram:</label>
@@ -54,9 +63,12 @@ const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
         style={styles.input}
         type="text"
         name="instagram"
-        value={socialFields().instagram}
+        value={props.socialFields.instagram}
         onInput={(e) =>
-          setSocialFields({ ...socialFields(), instagram: e.target.value })
+          props.setSocialFields({
+            ...props.socialFields,
+            instagram: e.target.value,
+          })
         }
       />
       <label style={styles.label}>Personal Website:</label>
@@ -64,10 +76,10 @@ const Form2 = ({ socialFields, setSocialFields }: Form2Props) => {
         style={styles.input}
         type="text"
         name="personalWebsite"
-        value={socialFields().personalWebsite}
+        value={props.socialFields.personalWebsite}
         onInput={(e) =>
-          setSocialFields({
-            ...socialFields(),
+          props.setSocialFields({
+            ...props.socialFields,
             personalWebsite: e.target.value,
           })
         }
