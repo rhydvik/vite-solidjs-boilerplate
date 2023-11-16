@@ -30,7 +30,7 @@ export const ContainedCardWithIcon = Template.bind({});
 ContainedCardWithIcon.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a contained card with an only title.',
+  content: 'This is a contained card with title and icon.',
   variant: 'contained',
   startIcon: (
     <span role="img" aria-label="icon">
