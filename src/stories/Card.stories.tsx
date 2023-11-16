@@ -20,8 +20,8 @@ export const ContainedCard = Template.bind({});
 ContainedCard.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a contained card with an only title.',
-  variant: 'contained',
+  content: 'This is a card with an only title.',
+
   startIcon: undefined,
   endIcon: undefined,
 };
@@ -30,8 +30,7 @@ export const ContainedCardWithIcon = Template.bind({});
 ContainedCardWithIcon.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a contained card with title and icon.',
-  variant: 'contained',
+  content: 'This is a card with title and icon.',
   startIcon: (
     <span role="img" aria-label="icon">
       &#9728;
@@ -44,8 +43,7 @@ export const ContainedCardWithIconAtEnd = Template.bind({});
 ContainedCardWithIconAtEnd.args = {
   startTitle: 'Card Title',
   endTitle: new Date().toDateString(),
-  content: 'This is a contained card with title and icon at start and end',
-  variant: 'contained',
+  content: 'This is a card with title and icon at start and end',
   startIcon: (
     <span role="img" aria-label="icon">
       &#9728;

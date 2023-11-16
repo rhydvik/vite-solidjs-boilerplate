@@ -5,30 +5,28 @@ import {
   Typography,
   Grid,
 } from '@suid/material';
-import { createSignal, JSX } from 'solid-js';
+import { JSX } from 'solid-js';
 
 export type Props = {
-  className?: string;
   startTitle: string;
   endTitle: string;
   startIcon?: JSX.Element; // New prop for the icon
   endIcon?: JSX.Element; // New prop for the icon
   content: string;
   raised: boolean;
-  variant: 'contained' | 'outlined' | 'text';
 };
 
-export default function Card(props: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [className, setClassName] = createSignal<string | undefined>(
-    props.className,
-  );
-
+export default function Card({
+  startTitle,
+  endTitle,
+  startIcon,
+  endIcon,
+  content,
+  raised,
+}: Readonly<Props>) {
   return (
     <MuiCard
-      class={className()}
-      variant={props.variant}
-      raised={props.raised}
+      raised={raised}
       sx={{
         boxShadow: '0px 2px 5px gray',
         borderRadius: '10px',
@@ -49,20 +47,20 @@ export default function Card(props: Props) {
             justifyContent="space-between"
             alignItems="center"
           >
-            <Grid item style={{ 'font-size': '1rem' }}>
-              <span style={{ 'margin-right': '6px' }}>{props.startIcon}</span>
-              <span>{props.startTitle}</span>
+            <Grid item sx={{ fontSize: '1rem' }}>
+              <span style={{ 'margin-right': '6px' }}>{startIcon}</span>
+              <span>{startTitle}</span>
             </Grid>
-            <Grid item style={{ 'font-size': '1rem' }}>
-              <span>{props.endTitle}</span>
-              <span style={{ 'margin-left': '6px' }}>{props.endIcon}</span>
+            <Grid item sx={{ fontSize: '1rem' }}>
+              <span>{endTitle}</span>
+              <span style={{ 'margin-left': '6px' }}>{endIcon}</span>
             </Grid>
           </Grid>
         }
       ></CardHeader>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          {props.content}
+          {content}
         </Typography>
       </CardContent>
     </MuiCard>
