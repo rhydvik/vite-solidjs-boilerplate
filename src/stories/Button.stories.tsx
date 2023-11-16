@@ -2,6 +2,7 @@ import { JSX } from 'solid-js';
 import { Meta } from '@storybook/addon-docs/blocks';
 
 import { Button, Props } from '../components/Button';
+import { printLog } from '../utils/utils';
 
 export default {
   title: 'Components/Button',
@@ -34,16 +35,26 @@ Text.args = {
   label: 'Text Button',
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
+export const WithStartIcon = Template.bind({});
+WithStartIcon.args = {
   variant: 'contained',
-  label: 'Button with Icon',
-  icon: (
+  label: 'CHECK',
+  startIcon: (
     <span role="img" aria-label="icon">
       &#10003;
     </span>
   ),
-  iconAlignment: 'start',
+};
+
+export const WithEndIcon = Template.bind({});
+WithEndIcon.args = {
+  variant: 'contained',
+  label: 'CHECK',
+  endIcon: (
+    <span role="img" aria-label="icon">
+      &#10003;
+    </span>
+  ),
 };
 
 export const Disabled = Template.bind({});
@@ -58,6 +69,5 @@ WithDropdown.args = {
   variant: 'contained',
   label: 'Button with Dropdown',
   dropdownItems: ['Item 1', 'Item 2', 'Item 3'],
-  // eslint-disable-next-line no-console
-  onDropdownItemClick: (item: string) => console.log(`Clicked: ${item}`),
+  onDropdownItemClick: (item: string) => printLog(`Clicked: ${item}`),
 };

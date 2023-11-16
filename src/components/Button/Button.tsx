@@ -1,14 +1,12 @@
-import React from 'react';
-import { createSignal } from 'solid-js';
+import { createSignal, JSX } from 'solid-js';
 import { Button as SButton, Menu, MenuItem } from '@suid/material';
 
 export type Props = {
-  className?: string;
   variant: 'contained' | 'outlined' | 'text';
   size?: 'small' | 'medium' | 'large' | string;
   label: string;
-  icon?: React.ReactNode;
-  iconAlignment?: 'start' | 'end' | string;
+  startIcon?: JSX.Element;
+  endIcon?: JSX.Element;
   onClick?: () => void;
   disabled?: boolean;
   href?: string;
@@ -19,28 +17,26 @@ export type Props = {
 function Button({
   variant,
   label,
-  icon,
-  iconAlignment,
-  className,
+  startIcon,
+  endIcon,
   onClick,
   disabled,
   href,
   dropdownItems,
   onDropdownItemClick,
 }: Props) {
-  const [anchorEl, setAnchorEl] = createSignal<null | HTMLButtonElement>(null);
+  const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement>(null);
   const [isDropdownOpen, setDropdownOpen] = createSignal(false);
 
-  const handleButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    setAnchorEl(event.currentTarget);
+  const handleButtonClick = (event: MouseEvent) => {
+    const target = event.currentTarget as HTMLButtonElement;
+
+    setAnchorEl(target);
     setDropdownOpen(!isDropdownOpen());
     onClick && typeof onClick === 'function' && onClick(); // Check if onClick is a function before calling it
   };
 
   const handleDropdownItemClick = (item: string) => {
-    setAnchorEl(null);
     setDropdownOpen(false);
     onDropdownItemClick &&
       typeof onDropdownItemClick === 'function' &&
@@ -50,13 +46,13 @@ function Button({
   return (
     <>
       <SButton
+        ref={anchorEl}
         variant={variant}
-        className={className}
         onClick={handleButtonClick}
         disabled={disabled}
         href={href}
-        startIcon={iconAlignment === 'start' ? icon : null}
-        endIcon={iconAlignment === 'end' ? icon : null}
+        startIcon={startIcon}
+        endIcon={endIcon}
       >
         <div>{label}</div>
       </SButton>
@@ -67,7 +63,10 @@ function Button({
           onClose={() => setDropdownOpen(false)}
         >
           {dropdownItems.map((item) => (
-            <MenuItem key={item} onClick={() => handleDropdownItemClick(item)}>
+            <MenuItem
+              value={item}
+              onClick={() => handleDropdownItemClick(item)}
+            >
               {item}
             </MenuItem>
           ))}
