@@ -3,6 +3,7 @@ import {
   CardContent,
   CardHeader,
   Typography,
+  Grid,
 } from '@suid/material';
 import { createSignal, JSX } from 'solid-js';
 
@@ -27,6 +28,7 @@ export default function Card(props: Props) {
     <MuiCard
       class={className()}
       variant={props.variant}
+      raised={props.raised}
       sx={{
         boxShadow: '0px 2px 5px gray',
         borderRadius: '10px',
@@ -36,25 +38,26 @@ export default function Card(props: Props) {
       <CardHeader
         sx={{
           backgroundColor: '#026EA1',
-          padding: '10px 16px 10px 16px',
+          padding: '10px 16px',
           borderRadius: '10px 10px 0px 0px',
           color: 'white',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'start',
-          justifyContent: 'space-between',
         }}
         title={
-          <Typography sx={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography class="item">
-              <span style={{ 'margin-right': '8px' }}>{props.startIcon}</span>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Grid item style={{ 'font-size': '1rem' }}>
+              <span style={{ 'margin-right': '6px' }}>{props.startIcon}</span>
               <span>{props.startTitle}</span>
-            </Typography>
-            <Typography class="item">
+            </Grid>
+            <Grid item style={{ 'font-size': '1rem' }}>
               <span>{props.endTitle}</span>
-              <span style={{ 'margin-left': '8px' }}>{props.endIcon}</span>
-            </Typography>
-          </Typography>
+              <span style={{ 'margin-left': '6px' }}>{props.endIcon}</span>
+            </Grid>
+          </Grid>
         }
       ></CardHeader>
       <CardContent>
