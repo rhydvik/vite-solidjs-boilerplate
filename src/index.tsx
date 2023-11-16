@@ -1,11 +1,11 @@
 import { render } from 'solid-js/web';
 
-import { makeServer } from './mocks/server';
+// import { makeServer } from './mocks/server';
 import './index.css';
 import App from './App';
 
 // if (process.env.NODE_ENV === 'development') {
-makeServer();
+// makeServer();
 // }
 
 const root = document.getElementById('root');
