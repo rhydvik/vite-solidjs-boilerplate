@@ -38,7 +38,7 @@ Text.args = {
 
 export const WithStartIcon = Template.bind({});
 WithStartIcon.args = {
-  variant: 'contained',
+  variant: 'outlined',
   label: 'CHECK',
   startIcon: (
     <span role="img" aria-label="icon">
