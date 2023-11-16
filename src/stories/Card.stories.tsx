@@ -1,59 +1,55 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 import { JSX } from 'solid-js';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 import { Card, Props } from '../components/Card';
 
 export default {
-  title: 'Card',
+  title: 'Components/Card',
   component: Card,
-  argTypes: {
-    variant: {
-      control: {
-        type: 'select',
-        options: ['contained', 'outlined', 'text'],
-      },
+  parameters: {
+    controls: { hideNoControlsWarning: true }, // To hide controls warning
+    docs: {
+      page: () => <Meta title="Card" />,
     },
   },
-} as Meta;
+};
 
 const Template: (args: Props) => JSX.Element = (args) => <Card {...args} />;
 
-export const Contained: Story<Props> = Template.bind({});
-Contained.args = {
-  title: 'Contained Card',
-  content: 'This is a contained card.',
+export const ContainedCard = Template.bind({});
+ContainedCard.args = {
+  startTitle: 'Card Title',
+  endTitle: '',
+  content: 'This is a contained card with an only title.',
   variant: 'contained',
+  startIcon: undefined,
+  endIcon: undefined,
 };
 
-export const Outlined: Story<Props> = Template.bind({});
-Outlined.args = {
-  title: 'Outlined Card',
-  content: 'This is an outlined card.',
-  variant: 'outlined',
-};
-
-export const Text: Story<Props> = Template.bind({});
-Text.args = {
-  title: 'Text Card',
-  content: 'This is a text card.',
-  variant: 'text',
-};
-
-export const WithChildren: Story<Props> = Template.bind({});
-WithChildren.args = {
-  title: 'Card with Children',
-  content: 'This card has children.',
+export const ContainedCardWithIcon = Template.bind({});
+ContainedCardWithIcon.args = {
+  startTitle: 'Card Title',
+  endTitle: '',
+  content: 'This is a contained card with an only title.',
   variant: 'contained',
-  children: <div>Additional content goes here.</div>,
+  startIcon: (
+    <span role="img" aria-label="icon">
+      &#9728;
+    </span>
+  ),
+  endIcon: undefined,
 };
 
-// Optionally, you can add some actions to test interactions
-export const ContainedWithAction: Story<Props> = Template.bind({});
-ContainedWithAction.args = {
-  title: 'Contained Card with Action',
-  content: 'Click me!',
+export const ContainedCardWithIconAtEnd = Template.bind({});
+ContainedCardWithIconAtEnd.args = {
+  startTitle: '',
+  endTitle: new Date().toDateString(),
+  content: 'This is a contained card with an only title.',
   variant: 'contained',
-  onClick: action('Card Clicked'),
+  startIcon: undefined,
+  endIcon: (
+    <span role="img" aria-label="icon">
+      &#9843;
+    </span>
+  ),
 };
