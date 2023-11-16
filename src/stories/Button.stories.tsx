@@ -1,8 +1,9 @@
 import { JSX } from 'solid-js';
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { Button, Props } from '../components/Button';
+import { Button } from '../components/Button';
 import { printLog } from '../utils/utils';
+import { Props } from '../components/Button/Button';
 
 export default {
   title: 'Components/Button',
@@ -70,4 +71,20 @@ WithDropdown.args = {
   label: 'Button with Dropdown',
   dropdownItems: ['Item 1', 'Item 2', 'Item 3'],
   onDropdownItemClick: (item: string) => printLog(`Clicked: ${item}`),
+};
+
+export const Sizes: Story<Props> = (args: Props) => (
+  <>
+    <Button {...args} size="small" label="Small Button" />
+    <br />
+    <br />
+    <Button {...args} size="medium" label="Medium Button" />
+    <br />
+    <br />
+    <Button {...args} size="large" label="Large Button" />
+  </>
+);
+Sizes.args = {
+  variant: 'contained',
+  size: 'large',
 };

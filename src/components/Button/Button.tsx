@@ -3,7 +3,7 @@ import { Button as SButton, Menu, MenuItem } from '@suid/material';
 
 export type Props = {
   variant: 'contained' | 'outlined' | 'text';
-  size?: 'small' | 'medium' | 'large' | string;
+  size?: 'small' | 'medium' | 'large';
   label: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
@@ -17,6 +17,7 @@ export type Props = {
 function Button({
   variant,
   label,
+  size,
   startIcon,
   endIcon,
   onClick,
@@ -33,14 +34,14 @@ function Button({
 
     setAnchorEl(target);
     setDropdownOpen(!isDropdownOpen());
-    onClick && typeof onClick === 'function' && onClick(); // Check if onClick is a function before calling it
+    onClick && typeof onClick === 'function' && onClick();
   };
 
   const handleDropdownItemClick = (item: string) => {
     setDropdownOpen(false);
     onDropdownItemClick &&
       typeof onDropdownItemClick === 'function' &&
-      onDropdownItemClick(item); // Check if onDropdownItemClick is a function before calling it
+      onDropdownItemClick(item);
   };
 
   return (
@@ -53,6 +54,7 @@ function Button({
         href={href}
         startIcon={startIcon}
         endIcon={endIcon}
+        size={size}
       >
         <div>{label}</div>
       </SButton>
