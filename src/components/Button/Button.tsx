@@ -4,6 +4,7 @@ import { Button as SButton, Menu, MenuItem } from '@suid/material';
 export type Props = {
   variant: 'contained' | 'outlined' | 'text';
   size?: 'small' | 'medium' | 'large';
+  sx?: unknown;
   label: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
@@ -18,6 +19,7 @@ function Button({
   variant,
   label,
   size,
+  sx = {},
   startIcon,
   endIcon,
   onClick,
@@ -25,6 +27,7 @@ function Button({
   href,
   dropdownItems,
   onDropdownItemClick,
+  ...rest
 }: Props) {
   const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement>(null);
   const [isDropdownOpen, setDropdownOpen] = createSignal(false);
@@ -47,6 +50,7 @@ function Button({
   return (
     <>
       <SButton
+        {...rest}
         ref={anchorEl}
         variant={variant}
         onClick={handleButtonClick}
@@ -55,6 +59,7 @@ function Button({
         startIcon={startIcon}
         endIcon={endIcon}
         size={size}
+        sx={Object.assign(sx, { borderRadius: '2px' })}
       >
         <div>{label}</div>
       </SButton>
