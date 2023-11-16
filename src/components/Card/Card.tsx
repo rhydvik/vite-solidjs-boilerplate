@@ -7,14 +7,14 @@ import {
 } from '@suid/material';
 import { JSX } from 'solid-js';
 
-export type Props = {
+export interface Props {
   startTitle: string;
   endTitle: string;
-  startIcon?: JSX.Element; // New prop for the icon
-  endIcon?: JSX.Element; // New prop for the icon
+  startIcon?: JSX.Element;
+  endIcon?: JSX.Element;
   content: string;
   raised: boolean;
-};
+}
 
 export default function Card({
   startTitle,
