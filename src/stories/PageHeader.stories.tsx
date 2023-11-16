@@ -1,11 +1,11 @@
 import { JSX } from 'solid-js';
 import { Router } from '@solidjs/router';
 
-import { Header } from '../components';
+import { PageHeader, Typography } from '../components';
 
 export default {
-  title: 'Components/Header', // Define the story grouping and name
-  component: Header, // Specify the component for auto-generation of controls
+  title: 'Components/PageHeader', // Define the story grouping and name
+  component: PageHeader, // Specify the component for auto-generation of controls
 };
 
 // Define a template for creating stories
@@ -14,7 +14,9 @@ const Template: (
 ) => JSX.Element = () => {
   return (
     <Router>
-      <Header />
+      <PageHeader
+        title={<Typography variant="h4">Order #16534612</Typography>}
+      />
     </Router>
   );
 };

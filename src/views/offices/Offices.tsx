@@ -3,6 +3,7 @@ import { createEffect, createSignal } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
 import { BasicModal, Button } from '../../components';
+import { OrderPageHeader } from './components/OrderPageHeader';
 
 type Office = {
   name: string;
@@ -37,6 +38,7 @@ export default function Offices() {
 
   return (
     <div>
+      <OrderPageHeader />
       <h1>Offices</h1>
       <A href="/">Home</A>
       {loading() && <p>Loading...</p>}
