@@ -14,6 +14,7 @@ export interface Props {
   endIcon?: JSX.Element;
   content: string;
   raised: boolean;
+  action?: JSX.Element;
 }
 
 export default function Card({
@@ -23,6 +24,7 @@ export default function Card({
   endIcon,
   content,
   raised,
+  action,
 }: Readonly<Props>) {
   return (
     <MuiCard
@@ -57,6 +59,7 @@ export default function Card({
             </Grid>
           </Grid>
         }
+        action={action}
       ></CardHeader>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
