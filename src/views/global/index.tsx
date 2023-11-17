@@ -105,6 +105,7 @@ const Global = () => {
     <div>
       <ComponentA />
       <ComponentB />
+      <div>asdome</div>
       <h2
         style={{ "font-size": "24px", "font-weight": "bold", margin: "20px 0" }}
       >

@@ -1,39 +1,84 @@
-/* eslint-disable  */
-import { A, Link } from "@solidjs/router";
-import { createEffect, createSignal, onMount } from "solid-js";
+import { A } from '@solidjs/router';
+import { createEffect, createSignal } from 'solid-js';
+import { Grid } from '@suid/material';
 
-import { printLog } from "../../utils/utils";
-import { BasicModal } from "../../components";
-import { OfficeState } from "../../store";
+import { printLog } from '../../utils/utils';
+import { BasicModal, Button, Card } from '../../components';
+import { OrderPageHeader } from './components/OrderPageHeader';
+
+type Office = {
+  name: string;
+  location: string;
+};
+
 export default function Offices() {
+  const [data, setData] = createSignal<Office[]>([]);
+  const [loading, setLoading] = createSignal(true);
   const [showModal, setShowModal] = createSignal(false);
-  // this kind of conditions messes up with solid reactivity
-  // if (loading()) {
-  //   return <p>Loading...</p>;
-  // }
-  //Destucturing not possible as the function does not update for solid Js
-  const { fetchAndSetOffices } = OfficeState;
 
-  onMount(() => {
-    fetchAndSetOffices();
+  const toggleModel = () => {
+    printLog('toggleModel');
+    setShowModal(!showModal());
+  };
+
+  async function fetchData() {
+    try {
+      const response = await fetch('/api/offices');
+      const result = (await response.json()) as { offices: Office[] | [] };
+      setData(result.offices);
+      setLoading(false);
+    } catch (err) {
+      printLog('Error fetching data', err);
+      setLoading(false);
+    }
+  }
+
+  createEffect(async () => {
+    await fetchData();
   });
 
   return (
     <div>
+      <OrderPageHeader />
+      {}
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+      </Grid>
       <h1>Offices</h1>
       <A href="/">Home</A>
-      {OfficeState.officesStore.isLoading && <p>Loading...</p>}
+      {loading() && <p>Loading...</p>}
       <ul>
-        {OfficeState.officesStore.offices.map((item: any) => {
+        {data().map((item) => {
           return <li>{item.name}</li>;
         })}
       </ul>
-      <Link href="/">Home</Link>
-      <BasicModal
-        open={showModal()}
-        title="Modal Title"
-        handleClose={() => setShowModal(false)}
+      <Button
+        variant="outlined"
+        label="Open Model"
+        onClick={() => toggleModel()}
       />
+      {showModal() && (
+        <BasicModal
+          open={true}
+          title="Modal Title"
+          handleClose={() => toggleModel()}
+        />
+      )}
     </div>
   );
 }

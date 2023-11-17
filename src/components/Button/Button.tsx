@@ -62,8 +62,6 @@ function Button({
         size={size}
         sx={Object.assign(sx, {
           borderRadius: '2px',
-          backgroundColor: variant === 'text' ? '' : '#1C4960',
-          color: variant === 'text' ? '#1C4960' : '#FFFFFF',
         })}
       >
         <div>{label}</div>
