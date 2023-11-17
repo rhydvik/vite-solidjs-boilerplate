@@ -60,7 +60,9 @@ function Button({
         startIcon={startIcon}
         endIcon={endIcon ?? (dropdownItems ? <ArrowDropDownIcon /> : null)}
         size={size}
-        sx={Object.assign(sx, { borderRadius: '2px' })}
+        sx={Object.assign(sx, {
+          borderRadius: '2px',
+        })}
       >
         <div>{label}</div>
       </SButton>

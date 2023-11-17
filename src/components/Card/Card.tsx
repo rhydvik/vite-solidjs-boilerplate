@@ -61,7 +61,7 @@ export default function Card({
         }
         action={action}
       ></CardHeader>
-      <CardContent>
+      <CardContent style={{ minHeight: 400 }}>
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>
