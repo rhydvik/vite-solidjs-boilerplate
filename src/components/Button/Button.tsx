@@ -60,11 +60,7 @@ function Button({
         startIcon={startIcon}
         endIcon={endIcon ?? (dropdownItems ? <ArrowDropDownIcon /> : null)}
         size={size}
-        sx={Object.assign(sx, {
-          borderRadius: '2px',
-          backgroundColor: variant === 'text' ? '' : '#1C4960',
-          color: variant === 'text' ? '#1C4960' : '#FFFFFF',
-        })}
+        sx={Object.assign(sx, { borderRadius: '2px' })}
       >
         <div>{label}</div>
       </SButton>
