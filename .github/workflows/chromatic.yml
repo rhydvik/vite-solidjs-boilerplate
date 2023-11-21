@@ -1,0 +1,19 @@
+name: 'Chromatic Deployment'
+
+on: [push]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm install
+      - name: Build Storybook
+        run: npm run build-storybook
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: chpt_805a94ad290b717
+          exitZeroOnChanges: true
+          waitForReview: true
