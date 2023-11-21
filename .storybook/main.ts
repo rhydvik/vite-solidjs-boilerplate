@@ -1,4 +1,5 @@
 import type { StorybookConfig } from "storybook-solidjs-vite";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -14,6 +15,18 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: "tag",
+  },
+  managerHead: (head) => {
+    return `
+      ${head}
+       <base href="/storybook/">
+    `;
+  },
+  viteFinal: (config) => {
+    return mergeConfig(config, {
+      ...config,
+      base: "/storybook/",
+    });
   },
 };
 export default config;
