@@ -1,5 +1,6 @@
 import { createSignal, JSX } from 'solid-js';
 import { Button as SButton, Menu, MenuItem } from '@suid/material';
+import ArrowDropDownIcon from '@suid/icons-material/ArrowDropDown';
 
 export type Props = {
   variant: 'contained' | 'outlined' | 'text';
@@ -28,7 +29,7 @@ function Button({
   dropdownItems,
   onDropdownItemClick,
   ...rest
-}: Props) {
+}: Readonly<Props>) {
   const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement>(null);
   const [isDropdownOpen, setDropdownOpen] = createSignal(false);
 
@@ -57,9 +58,11 @@ function Button({
         disabled={disabled}
         href={href}
         startIcon={startIcon}
-        endIcon={endIcon}
+        endIcon={endIcon ?? (dropdownItems ? <ArrowDropDownIcon /> : null)}
         size={size}
-        sx={Object.assign(sx, { borderRadius: '2px' })}
+        sx={Object.assign(sx, {
+          borderRadius: '2px',
+        })}
       >
         <div>{label}</div>
       </SButton>

@@ -1,8 +1,9 @@
 import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
+import { Grid } from '@suid/material';
 
 import { printLog } from '../../utils/utils';
-import { BasicModal, Button } from '../../components';
+import { BasicModal, Button, Card } from '../../components';
 import { OrderPageHeader } from './components/OrderPageHeader';
 
 type Office = {
@@ -39,6 +40,25 @@ export default function Offices() {
   return (
     <div>
       <OrderPageHeader />
+      {}
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+      </Grid>
       <h1>Offices</h1>
       <A href="/">Home</A>
       {loading() && <p>Loading...</p>}
