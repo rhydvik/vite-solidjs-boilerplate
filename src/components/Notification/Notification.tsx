@@ -8,23 +8,19 @@ interface NotificationProps {
   type: 'warning' | 'info' | 'error';
   children: JSX.Element;
 }
-const getIcon = (type: string) => {
-  const styles = { 'font-size': '24px' };
-  switch (type) {
-    case 'warning':
-      return <Warning style={{ ...styles, color: colors.warning }} />;
-    case 'error':
-      return <WarningAmber style={{ ...styles, color: colors.error }} />;
-    case 'info':
-      return <Info style={{ ...styles, color: colors.info }} />;
-    default:
-      return <Info style={{ ...styles }} />;
-  }
+
+const iconMap = {
+  warning: <Warning style={{ 'font-size': '24px', color: colors.warning }} />,
+  error: <WarningAmber style={{ 'font-size': '24px', color: colors.error }} />,
+  info: <Info style={{ 'font-size': '24px', color: colors.info }} />,
 };
+
 const Notification = (props: NotificationProps): JSX.Element => {
+  const selectedIcon = iconMap[props.type];
+
   return (
     <Grid class={`${cls.container} ${cls[props.type]}`}>
-      <div class={cls.icon}>{getIcon(props.type)}</div>
+      <div class={cls.icon}>{selectedIcon}</div>
       <div>{props.children}</div>
     </Grid>
   );
