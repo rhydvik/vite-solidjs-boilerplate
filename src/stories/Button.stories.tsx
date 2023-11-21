@@ -50,7 +50,7 @@ WithStartIcon.args = {
 export const WithEndIcon = Template.bind({});
 WithEndIcon.args = {
   variant: 'outlined',
-  label: 'CHECK',
+  label: 'Check',
   endIcon: (
     <span role="img" aria-label="icon">
       &#10003;
