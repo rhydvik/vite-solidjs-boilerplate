@@ -17,10 +17,28 @@ export const Primary = Template.bind({});
 Primary.args = {
   variant: 'filled',
   label: 'Primary Text Field',
+  required: true,
+  disabled: true,
+  helperText: 'some help text',
+  error: true,
+  multiline: true,
+  rows: 3,
+  startAdornmentFlag: true,
+  InputAdornmentPostion: 'start',
+  InputAdornmentText: 'kg',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'outlined',
   label: 'Secondary Text Field',
+  required: false,
+  disabled: false,
+  helperText: 'some help text',
+  error: false,
+  multiline: false,
+  rows: 0,
+  startAdornmentFlag: false,
+  InputAdornmentPostion: 'start',
+  InputAdornmentText: 'ltr',
 };
