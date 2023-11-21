@@ -16,17 +16,5 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  managerHead: (head) => {
-    return `
-      ${head}
-       <base href="/storybook/">
-    `;
-  },
-  viteFinal: (config) => {
-    return mergeConfig(config, {
-      ...config,
-      base: "/storybook/",
-    });
-  },
 };
 export default config;
