@@ -27,6 +27,9 @@ jobs:
       - name: run tests
         run: npm run test
 
+      - name: deploy it to chromatic
+        run: npm run chromatic
+
       - name: Build Project
         run: npm run build
 
