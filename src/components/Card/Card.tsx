@@ -1,10 +1,4 @@
-import {
-  Card as MuiCard,
-  CardContent,
-  CardHeader,
-  Typography,
-  Grid,
-} from '@suid/material';
+import { Card as MuiCard, CardContent, CardHeader, Grid } from '@suid/material';
 import { JSX } from 'solid-js';
 
 export interface Props {
@@ -12,9 +6,9 @@ export interface Props {
   endTitle: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
-  content: string;
   raised: boolean;
   action?: JSX.Element;
+  children: JSX.Element;
 }
 
 export default function Card({
@@ -22,7 +16,7 @@ export default function Card({
   endTitle,
   startIcon,
   endIcon,
-  content,
+  children,
   raised,
   action,
 }: Readonly<Props>) {
@@ -61,11 +55,7 @@ export default function Card({
         }
         action={action}
       ></CardHeader>
-      <CardContent style={{ minHeight: 400 }}>
-        <Typography variant="body2" color="text.secondary">
-          {content}
-        </Typography>
-      </CardContent>
+      <CardContent sx={{ minHeight: 400 }}>{children}</CardContent>
     </MuiCard>
   );
 }
