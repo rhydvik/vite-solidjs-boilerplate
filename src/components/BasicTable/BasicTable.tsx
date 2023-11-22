@@ -10,12 +10,7 @@ import {
 } from '@suid/material';
 import { Component, For, JSXElement } from 'solid-js';
 
-export type Row = {
-  ideaTitle: string;
-  link: string;
-  uploadedDoc: string;
-  uploadDoc: string;
-};
+export type Row = Record<string, string>;
 
 export type Column = {
   name: string;
@@ -133,7 +128,7 @@ export const BasicTable: Component<Props> = (props) => {
                     >
                       {columnItem.renderCell
                         ? columnItem.renderCell(rowItem)
-                        : rowItem[columnItem.key as keyof Row]}
+                        : rowItem[columnItem.key]}
                     </TableCell>
                   )}
                 </For>
