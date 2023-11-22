@@ -12,12 +12,12 @@ import { JSX, createSignal } from 'solid-js';
 import { cardStyles } from './Card.style';
 
 export interface Props {
-  startTitle: string;
-  endTitle: string;
+  startTitle?: string;
+  endTitle?: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
-  content: string;
-  raised: boolean;
+  childern: JSX.Element | string;
+  raised?: boolean;
   action?: JSX.Element;
   accordion?: boolean;
   expanded?: boolean;
@@ -29,7 +29,7 @@ export default function Card({
   endTitle,
   startIcon,
   endIcon,
-  content,
+  childern,
   raised,
   action,
   accordion = false,
@@ -97,7 +97,7 @@ export default function Card({
         }}
       >
         <Typography variant="body2" color="text.secondary">
-          {content}
+          {childern}
         </Typography>
       </CardContent>
     </MuiCard>
