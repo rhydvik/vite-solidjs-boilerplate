@@ -1,14 +1,25 @@
 import { Box, Modal, Typography, useTheme } from '@suid/material';
+import { JSX } from 'solid-js';
 
 import { Button } from '../Button';
 
-type ModalProps = {
+export interface ModalProps {
   open: boolean;
   title: string;
+  description?: string;
   handleClose?: () => void;
-};
+  additionalModalProps?: Record<string, unknown>;
+  children: JSX.Element;
+}
 
-export default function BasicModal({ open, title, handleClose }: ModalProps) {
+export default function BasicModal({
+  open,
+  title,
+  description,
+  handleClose,
+  additionalModalProps = {},
+  children,
+}: Readonly<ModalProps>) {
   const theme = useTheme();
   return (
     <Modal
@@ -16,6 +27,7 @@ export default function BasicModal({ open, title, handleClose }: ModalProps) {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
+      {...additionalModalProps}
     >
       <Box
         sx={{
@@ -33,8 +45,9 @@ export default function BasicModal({ open, title, handleClose }: ModalProps) {
           {title}
         </Typography>
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Left aligned contextual description for modal.
+          {description}
         </Typography>
+        <Box>{children}</Box>
         <Box sx={{ justifyContent: 'flex-end', display: 'flex', mt: 2 }}>
           <Button
             sx={{ mr: 2 }}

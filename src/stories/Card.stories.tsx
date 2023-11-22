@@ -22,7 +22,7 @@ export const ContainedCard = Template.bind({});
 ContainedCard.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a card with an only title.',
+  childern: 'This is a card with an only title.',
 
   startIcon: undefined,
   endIcon: undefined,
@@ -32,7 +32,7 @@ export const ContainedCardWithIcon = Template.bind({});
 ContainedCardWithIcon.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a card with title and icon.',
+  childern: 'This is a card with title and icon.',
   startIcon: (
     <span role="img" aria-label="icon">
       &#9728;
@@ -45,7 +45,7 @@ export const ContainedCardWithIconAtEnd = Template.bind({});
 ContainedCardWithIconAtEnd.args = {
   startTitle: 'Card Title',
   endTitle: new Date().toDateString(),
-  content: 'This is a card with title and icon at start and end',
+  childern: 'This is a card with title and icon at start and end',
   startIcon: (
     <span role="img" aria-label="icon">
       &#9728;
@@ -62,7 +62,7 @@ export const ContainedCardWithAction = Template.bind({});
 ContainedCardWithAction.args = {
   startTitle: 'Card Title',
   endTitle: '',
-  content: 'This is a card with action button',
+  childern: 'This is a card with action button',
   startIcon: undefined,
   endIcon: undefined,
   action: (
@@ -74,4 +74,24 @@ ContainedCardWithAction.args = {
       onDropdownItemClick={(item: string) => printLog(`Clicked: ${item}`)}
     ></Button>
   ),
+};
+
+export const ContainedCardWithAccordion = Template.bind({});
+ContainedCardWithAccordion.args = {
+  startTitle: 'Card Title',
+  endTitle: '',
+  childern: 'This is a card with an accordion option.',
+  startIcon: undefined,
+  endIcon: undefined,
+  action: (
+    <Button
+      variant={'contained'}
+      label={'Card Actions'}
+      size="small"
+      dropdownItems={['Item 1', 'Item 2', 'Item 3']}
+      onDropdownItemClick={(item: string) => printLog(`Clicked: ${item}`)}
+    ></Button>
+  ),
+  accordion: true,
+  expanded: false,
 };
