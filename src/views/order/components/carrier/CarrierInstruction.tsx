@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const CarrierInstructions = () => {
   return (
-    <Card startTitle="Carrier Instructions" expanded={true} accordion={true}>
+    <Card startTitle="Carrier Instructions">
       <div class="p-4">
         <p>
           THE TRAILER MUST BE CLEAN AND FREE OF ALL DEBRIS - FOOD GRADE TRAILER.

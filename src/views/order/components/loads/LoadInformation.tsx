@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const LoadInformation = () => {
   return (
-    <Card startTitle="Load Information" expanded={true} accordion={true}>
+    <Card startTitle="Load Information">
       <div class="p-4">
         <h1 class="text-lg font-bold">Load 1661566-1</h1>
         <div>ADD FLAG POST LOAD TRUCK SEARCH</div>

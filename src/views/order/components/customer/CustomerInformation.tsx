@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const CustomerInformation = () => {
   return (
-    <Card startTitle="Customer Information" expanded={true} accordion={true}>
+    <Card startTitle="Customer Information">
       <div class="p-4">
         <div class="flex flex-row justify-between">
           <div>

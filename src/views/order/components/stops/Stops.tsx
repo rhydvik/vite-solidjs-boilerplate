@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const Stops = () => {
   return (
-    <Card startTitle="Stops" expanded={true} accordion={true}>
+    <Card startTitle="Stops">
       <div class="p-4">
         <div>
           <div>Date: JUN 20 2022</div>

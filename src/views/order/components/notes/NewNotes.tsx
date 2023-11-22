@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const NewATGOnlyNote = () => {
   return (
-    <Card startTitle="New ATG Only Note" expanded={true} accordion={true}>
+    <Card startTitle="New ATG Only Note">
       <div class="p-4">
         <p>
           It is a long established fact that a reader will be distracted by the

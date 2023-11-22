@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const CarrierPayments = () => {
   return (
-    <Card startTitle="Customer Payments" expanded={true} accordion={true}>
+    <Card startTitle="Customer Payments">
       <div class="p-4">
         <div>Date: JUN 22 2022</div>
         <div>Reference: 432659336</div>

@@ -4,16 +4,7 @@ import { Component } from 'solid-js';
 
 import { Card, Typography } from '../../../../components';
 
-const titleStyle = {
-  color: 'black',
-  fontSize: '16px',
-  fontWeight: '700',
-  fontStyle: 'normal',
-  fontFamily: 'Inter',
-  flex: '1',
-  alignItems: 'center',
-};
-const contentStyle = {
+const textStyle = {
   color: 'black',
   fontSize: '16px',
   fontWeight: '400',
@@ -23,24 +14,41 @@ const contentStyle = {
   alignItems: 'center',
 };
 
+const titleStyle = { ...textStyle, fontWeight: '700' };
+const contentStyle = { ...textStyle };
+
 const scrollContainerStyle = {
   overflowY: 'scroll',
   maxHeight: '466px',
   '&::-webkit-scrollbar': {
     width: '0.3em',
   },
-  '&::-webkit-scrollbar-track': {
-    outline: '1px solid #C2C2C2',
-    webkitBoxShadow: 'inset 0 0 6px #C2C2C2',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    backgroundColor: '#C2C2C2',
-    outline: '1px solid #C2C2C2',
-  },
 };
 const dividerStyle = { color: '#ccc', margin: '13px 0px' };
 
-const PreviousCard: Component = () => {
+const noteDetails = [
+  {
+    title: 'Load Quoted as LTL',
+    details: [
+      'Quote ID: CXDFDG3FD',
+      'Carrier: ATG - Southeastern Freight Lines',
+      'Origin Zip: 33901',
+      'Destination Zip: 33903',
+      'Cost: $127.97',
+      'Pick Date: Sun Apr 17 2022',
+      'Service Type: Standard',
+    ],
+  },
+  {
+    title: 'Items',
+    details: [
+      'Qty | Weight | NMFC | Class | Dimensions | Hazmat | Suggested Class',
+      '1 | 12 lbs | 111 | 50 | 1”x1”x1” | No',
+    ],
+  },
+];
+
+const NoteCard: Component = () => {
   return (
     <Stack spacing={1}>
       <Grid item container>
@@ -54,60 +62,24 @@ const PreviousCard: Component = () => {
           alignItems="center"
           justifyContent="flex-end"
         >
-          <Typography
-            variant="body2"
-            component="p"
-            sxProps={{
-              color: 'black',
-              fontFamily: 'Inter',
-              fontSize: '14px',
-              fontWeight: '400',
-              fontStyle: 'normal',
-            }}
-          >
+          <Typography variant="body2" component="p" sxProps={textStyle}>
             JUN 01 2022 8:57 AM
           </Typography>
           <Delete sx={{ color: '#026EA1', cursor: 'pointer' }} />
         </Grid>
       </Grid>
-      <Stack spacing={1} pb={3}>
-        <Typography variant="body1" component="p" sxProps={titleStyle}>
-          Load Quoted as LTL
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Quote ID: CXDFDG3FD
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Carrier: ATG - Southeastern Freight Lines
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Origin Zip: 33901
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Destination Zip: 33903
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Cost: $127.97
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Pick Date: Sun Apr 17 2022 00:00:00 GMT-0400 (Eastern Daylight Time)
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Service Type: Standard{' '}
-        </Typography>
-      </Stack>
-      <Stack spacing={1}>
-        <Typography variant="h6" component="h6" sxProps={titleStyle}>
-          Items:
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          Qty | Weight | NMFC | Class | Dimensions | Hazmat | Suggested Class
-        </Typography>
-        <Typography variant="body1" component="p" sxProps={contentStyle}>
-          1 | 12 lbs | 111 | 50 | 1”x1”x1” | No
-        </Typography>
-      </Stack>
-      <Grid item xs={6}></Grid>
+      {noteDetails.map((section) => (
+        <Stack spacing={1} pb={3}>
+          <Typography variant="body1" component="p" sxProps={titleStyle}>
+            {section.title}
+          </Typography>
+          {section.details.map((detail) => (
+            <Typography variant="body1" component="p" sxProps={contentStyle}>
+              {detail}
+            </Typography>
+          ))}
+        </Stack>
+      ))}
     </Stack>
   );
 };
@@ -121,13 +93,8 @@ export const PreviousNotes = () => {
       raised={true}
     >
       <Stack class="border p-4 border-[#CCC]" sx={scrollContainerStyle}>
-        <PreviousCard />
+        <NoteCard />
         <Divider sx={dividerStyle} />
-        <PreviousCard />
-        <Divider sx={dividerStyle} />
-        <PreviousCard />
-        <Divider sx={dividerStyle} />
-        <PreviousCard />
       </Stack>
     </Card>
   );

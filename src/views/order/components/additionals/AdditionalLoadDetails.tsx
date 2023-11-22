@@ -2,7 +2,7 @@ import { Card } from '../../../../components';
 
 export const AdditionalLoadDetails = () => {
   return (
-    <Card startTitle="Additional Load Details" expanded={true} accordion={true}>
+    <Card startTitle="Additional Load Details">
       <div class="p-4">
         <div>MODE</div>
         <div>EQUIPMENT</div>

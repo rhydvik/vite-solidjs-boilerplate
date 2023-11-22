@@ -5,8 +5,10 @@ import {
   Typography,
   Grid,
 } from '@suid/material';
-import ExpandMore from '@suid/icons-material/ExpandMore';
-import ExpandLess from '@suid/icons-material/ExpandLess';
+import {
+  PlayCircleOutlineOutlined,
+  ArrowDropDownCircleOutlined,
+} from '@suid/icons-material';
 import { JSX, createSignal } from 'solid-js';
 
 import { cardStyles } from './Card.style';
@@ -32,8 +34,8 @@ export default function Card({
   children,
   raised,
   action,
-  accordion = false,
-  expanded = false,
+  accordion = true,
+  expanded = true,
   onToggle,
 }: Readonly<Props>) {
   const [isExpanded, setIsExpanded] = createSignal(accordion ? expanded : true);
@@ -61,7 +63,12 @@ export default function Card({
                 component="span"
                 sx={cardStyles.accordionIcon}
               >
-                {accordion && (isExpanded() ? <ExpandLess /> : <ExpandMore />)}
+                {accordion &&
+                  (isExpanded() ? (
+                    <ArrowDropDownCircleOutlined />
+                  ) : (
+                    <PlayCircleOutlineOutlined />
+                  ))}
               </Typography>
               <Typography
                 variant="body2"
