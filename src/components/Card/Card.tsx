@@ -5,7 +5,11 @@ import {
   Typography,
   Grid,
 } from '@suid/material';
-import { JSX } from 'solid-js';
+import ExpandMore from '@suid/icons-material/ExpandMore';
+import ExpandLess from '@suid/icons-material/ExpandLess';
+import { JSX, createSignal } from 'solid-js';
+
+import { cardStyles } from './Card.style';
 
 export interface Props {
   startTitle: string;
@@ -15,6 +19,9 @@ export interface Props {
   content: string;
   raised: boolean;
   action?: JSX.Element;
+  accordion?: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
 }
 
 export default function Card({
@@ -25,23 +32,22 @@ export default function Card({
   content,
   raised,
   action,
+  accordion = false,
+  expanded = false,
+  onToggle,
 }: Readonly<Props>) {
+  const [isExpanded, setIsExpanded] = createSignal(accordion ? expanded : true);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded());
+    onToggle && onToggle();
+  };
+
   return (
-    <MuiCard
-      raised={raised}
-      sx={{
-        boxShadow: '0px 2px 5px gray',
-        borderRadius: '10px',
-        color: 'white',
-      }}
-    >
+    <MuiCard raised={raised} sx={cardStyles.card}>
       <CardHeader
-        sx={{
-          backgroundColor: '#026EA1',
-          padding: '10px 16px',
-          borderRadius: '10px 10px 0px 0px',
-          color: 'white',
-        }}
+        onClick={accordion ? handleToggle : undefined}
+        sx={cardStyles.cardHeader}
         title={
           <Grid
             container
@@ -49,19 +55,47 @@ export default function Card({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Grid item sx={{ fontSize: '1rem' }}>
-              <span style={{ 'margin-right': '6px' }}>{startIcon}</span>
-              <span>{startTitle}</span>
+            <Grid item sx={cardStyles.gridItem}>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.accordionIcon}
+              >
+                {accordion && (isExpanded() ? <ExpandLess /> : <ExpandMore />)}
+              </Typography>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.startIcon}
+              >
+                {startIcon}
+              </Typography>
+              <Typography variant="body2" component="span">
+                {startTitle}
+              </Typography>
             </Grid>
-            <Grid item sx={{ fontSize: '1rem' }}>
-              <span>{endTitle}</span>
-              <span style={{ 'margin-left': '6px' }}>{endIcon}</span>
+            <Grid item sx={cardStyles.gridItem}>
+              <Typography variant="body2" component="span">
+                {endTitle}
+              </Typography>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.endIcon}
+              >
+                {endIcon}
+              </Typography>
             </Grid>
           </Grid>
         }
         action={action}
       ></CardHeader>
-      <CardContent style={{ minHeight: 400 }}>
+      <CardContent
+        sx={{
+          overflow: 'hidden',
+          display: isExpanded() ? 'block' : 'none',
+        }}
+      >
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>

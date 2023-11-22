@@ -75,3 +75,23 @@ ContainedCardWithAction.args = {
     ></Button>
   ),
 };
+
+export const ContainedCardWithAccordion = Template.bind({});
+ContainedCardWithAccordion.args = {
+  startTitle: 'Card Title',
+  endTitle: '',
+  content: 'This is a card with an accordion option.',
+  startIcon: undefined,
+  endIcon: undefined,
+  action: (
+    <Button
+      variant={'contained'}
+      label={'Card Actions'}
+      size="small"
+      dropdownItems={['Item 1', 'Item 2', 'Item 3']}
+      onDropdownItemClick={(item: string) => printLog(`Clicked: ${item}`)}
+    ></Button>
+  ),
+  accordion: true,
+  expanded: false,
+};
