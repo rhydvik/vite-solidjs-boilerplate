@@ -60,6 +60,8 @@ export default function Offices() {
         </Grid>
       </Grid>
       <h1>Offices</h1>
+      <h2>Offices</h2>
+
       <A href="/">Home</A>
       {loading() && <p>Loading...</p>}
       <ul>
