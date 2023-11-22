@@ -54,6 +54,8 @@ export const BasicTable: Component<Props> = (props) => {
         {(item) => (
           <TableCell
             sx={{
+              textAlign: item.textAlign ? item.textAlign : 'left',
+              minWidth: item.minWidth ?? item.minWidth,
               fontSize: 14,
               fontStyle: 'normal',
               fontWeight: 500,
@@ -75,6 +77,8 @@ export const BasicTable: Component<Props> = (props) => {
         {(item) => (
           <TableCell
             sx={{
+              textAlign: item.textAlign ? item.textAlign : 'left',
+              minWidth: item.minWidth ?? item.minWidth,
               fontSize: 14,
               fontStyle: 'normal',
               fontWeight: 700,
