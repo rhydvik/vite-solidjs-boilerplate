@@ -3,8 +3,8 @@ import { createEffect, createSignal } from 'solid-js';
 import { Grid } from '@suid/material';
 
 import { printLog } from '../../utils/utils';
-import { BasicModal, Button, Card } from '../../components';
 import { OrderPageHeader } from './components/OrderPageHeader';
+import { BasicModal, Button, Notification, LTLQuote } from '../../components';
 
 type Office = {
   name: string;
@@ -81,6 +81,8 @@ export default function Offices() {
           handleClose={() => toggleModel()}
         />
       )}
+      <Notification type="warning">Warning Message</Notification>
+      <LTLQuote />
     </div>
   );
 }

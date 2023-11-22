@@ -5,3 +5,5 @@ export * from './Sidebar';
 export * from './Typography';
 export * from './PageHeader';
 export * from './Card';
+export * from './Notification';
+export * from './LTLQuote';
