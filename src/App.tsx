@@ -7,10 +7,18 @@ import {
   GlobalRoute,
   HomeRoute,
   OfficeRoute,
+  OrderRoute,
   SolidRoute,
 } from './views';
 
-const routes = [HomeRoute, OfficeRoute, CarrierRoute, SolidRoute, GlobalRoute];
+const routes = [
+  HomeRoute,
+  OfficeRoute,
+  CarrierRoute,
+  SolidRoute,
+  GlobalRoute,
+  OrderRoute,
+];
 
 function App() {
   const RoutesComponent = useRoutes(routes);

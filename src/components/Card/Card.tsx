@@ -16,7 +16,7 @@ export interface Props {
   endTitle?: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
-  childern: JSX.Element | string;
+  children: JSX.Element | string;
   raised?: boolean;
   action?: JSX.Element;
   accordion?: boolean;
@@ -29,7 +29,7 @@ export default function Card({
   endTitle,
   startIcon,
   endIcon,
-  childern,
+  children,
   raised,
   action,
   accordion = false,
@@ -96,9 +96,7 @@ export default function Card({
           display: isExpanded() ? 'block' : 'none',
         }}
       >
-        <Typography variant="body2" color="text.secondary">
-          {childern}
-        </Typography>
+        {children}
       </CardContent>
     </MuiCard>
   );

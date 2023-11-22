@@ -3,7 +3,7 @@ import { createEffect, createSignal } from 'solid-js';
 import { Grid } from '@suid/material';
 
 import { printLog } from '../../utils/utils';
-import { OrderPageHeader } from './components/OrderPageHeader';
+import { OrderPageHeader } from '../order/components/orderPageHeader/OrderPageHeader';
 import { BasicModal, Button, Notification, LTLQuote } from '../../components';
 
 type Office = {

@@ -3,7 +3,7 @@ export const cardStyles = {
     raised: true,
     boxShadow: '0px 2px 5px gray',
     borderRadius: '10px',
-    color: 'white',
+    marginBottom: '20px',
   },
   cardHeader: {
     backgroundColor: '#026EA1',
