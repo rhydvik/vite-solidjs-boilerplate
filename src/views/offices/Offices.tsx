@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
 
 import { printLog } from '../../utils/utils';
-import { BasicModal, Button } from '../../components';
+import { BasicModal, Button, LTLQuote } from '../../components';
 
 type Office = {
   name: string;
@@ -62,6 +62,7 @@ export default function Offices() {
           handleClose={() => toggleModel()}
         />
       )}
+      <LTLQuote />
     </div>
   );
 }
