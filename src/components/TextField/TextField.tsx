@@ -5,17 +5,17 @@ export type Props = {
   variant: 'standard' | 'outlined' | 'filled';
   label: string;
   id: string;
-  required: boolean;
-  disabled: boolean;
-  readOnly: boolean;
-  error: boolean;
-  type: 'password' | 'number' | 'search';
-  helperText: string;
-  multiline: boolean;
-  rows: number;
-  InputAdornmentPostion: 'start' | 'end';
-  InputAdornmentText: string;
-  startAdornmentFlag: boolean;
+  required?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
+  error?: boolean;
+  type?: 'password' | 'number' | 'search';
+  helperText?: string;
+  multiline?: boolean;
+  rows?: number;
+  InputAdornmentPostion?: 'start' | 'end';
+  InputAdornmentText?: string;
+  startAdornmentFlag?: boolean;
 };
 
 function TextField({
@@ -27,10 +27,10 @@ function TextField({
   type,
   helperText,
   error,
-  multiline,
+  multiline = false,
   rows,
   InputAdornmentPostion,
-  startAdornmentFlag,
+  startAdornmentFlag = false,
   InputAdornmentText,
 }: Props) {
   return (
