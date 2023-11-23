@@ -23,9 +23,9 @@ ContainedCard.args = {
   startTitle: 'Card Title',
   endTitle: '',
   childern: 'This is a card with an only title.',
-
   startIcon: undefined,
   endIcon: undefined,
+  accordion: false,
 };
 
 export const ContainedCardWithIcon = Template.bind({});
@@ -39,6 +39,7 @@ ContainedCardWithIcon.args = {
     </span>
   ),
   endIcon: undefined,
+  accordion: false,
 };
 
 export const ContainedCardWithIconAtEnd = Template.bind({});
@@ -56,6 +57,7 @@ ContainedCardWithIconAtEnd.args = {
       &#9843;
     </span>
   ),
+  accordion: false,
 };
 
 export const ContainedCardWithAction = Template.bind({});
@@ -74,6 +76,7 @@ ContainedCardWithAction.args = {
       onDropdownItemClick={(item: string) => printLog(`Clicked: ${item}`)}
     ></Button>
   ),
+  accordion: false,
 };
 
 export const ContainedCardWithAccordion = Template.bind({});
