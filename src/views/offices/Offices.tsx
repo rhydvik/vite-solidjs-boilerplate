@@ -1,7 +1,9 @@
 import { A } from '@solidjs/router';
 import { createEffect, createSignal } from 'solid-js';
+import { Grid } from '@suid/material';
 
 import { printLog } from '../../utils/utils';
+import { OrderPageHeader } from '../order/components/orderPageHeader/OrderPageHeader';
 import { BasicModal, Button, Notification, LTLQuote } from '../../components';
 
 type Office = {
@@ -35,14 +37,31 @@ export default function Offices() {
     await fetchData();
   });
 
-  // this kind of conditions messes up with solid reactivity
-  // if (loading()) {
-  //   return <p>Loading...</p>;
-  // }
-
   return (
     <div>
+      <OrderPageHeader />
+      {}
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <Card
+            startTitle="Card Info"
+            endTitle="Filter Date"
+            content="Hello"
+            raised
+          />
+        </Grid>
+      </Grid>
       <h1>Offices</h1>
+      <h2>Offices</h2>
+
       <A href="/">Home</A>
       {loading() && <p>Loading...</p>}
       <ul>

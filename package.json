@@ -10,8 +10,9 @@
     "serve": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "sb": "storybook dev -p 6006",
-    "build-sb": "storybook build",
-    "test": "vitest --watch=false"
+    "build-storybook": "storybook build -- -o ./storybook-static",
+    "test": "vitest --watch=false",
+    "chromatic": "chromatic --project-token=chpt_805a94ad290b717 --exit-zero-on-changes -d storybook-static/"
   },
   "lint-staged": {
     "*.ts?(x)": [
@@ -71,6 +72,7 @@
     "@suid/material": "^0.15.1",
     "@suid/vite-plugin": "^0.1.5",
     "axios": "^1.6.0",
+    "chromatic": "^9.1.0",
     "miragejs": "^0.1.47",
     "solid-js": "^1.7.6"
   }
