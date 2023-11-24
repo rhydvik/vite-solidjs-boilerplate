@@ -1,4 +1,9 @@
-import { Card, Notification } from '../../../../components';
+import {
+  Card,
+  Notification,
+  TextField,
+  Checkbox,
+} from '../../../../components';
 
 export const DriverAndTruckDetails = () => {
   return (
@@ -6,25 +11,42 @@ export const DriverAndTruckDetails = () => {
       <Notification type="warning">
         This customer requires tracking.
       </Notification>
-      <div class="p-4">
-        <div>Comments</div>
-        <div>Mooslookmeguntic, ME</div>
-        <div>Temp</div>
-        <div>
-          <div>Angie Agent</div>
-          <div>
-            Temp good, driver sending BOL when he gets back to his truck.
-          </div>
-          <div>April 30 2022 2:52 PM</div>
-          <div>32 F</div>
+      <div class="flex pt-5">
+        <div class="flex-grow mr-4">
+          <TextField
+            label="Driver Name"
+            placeholder="Enter Driver Name"
+            variant="outlined"
+            id="driverNametxt"
+          />
         </div>
-        <div>
-          <div>Angie Agent</div>
-          <div>Temp good.</div>
+        <div class="flex-grow mr-4">
+          <TextField
+            label="Driver Phone"
+            placeholder="Enter Driver Phone"
+            variant="outlined"
+            id="driverPhonext"
+          />
         </div>
-        <div>
-          <div>Bobbi Frels</div>
-          <div>Temp good, truck load on time.</div>
+        <div class="flex-grow mr-4">
+          <Checkbox label="Enable Tracking" />
+        </div>
+        <div class="flex-grow mr-4">
+          <TextField
+            label="Truck Number"
+            placeholder="Enter Truck Number"
+            variant="outlined"
+            id="truckNumberxt"
+          />
+        </div>
+        <div class="flex-grow">
+          <TextField
+            label="Trailer Number"
+            placeholder="Enter Trailer Number"
+            variant="outlined"
+            type="number"
+            id="trailerNumberxt"
+          />
         </div>
       </div>
     </Card>
