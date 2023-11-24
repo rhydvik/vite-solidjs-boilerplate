@@ -1,35 +1,57 @@
-import { Radio as SRadio } from '@suid/material';
+import {
+  RadioGroup as SRadioGroup,
+  Radio as SRadio,
+  FormControl,
+  FormControlLabel,
+} from '@suid/material';
+
+export type RadioOption = {
+  label: string;
+  value: string;
+  checked?: boolean;
+};
 
 export type Props = {
   label: string;
+  labelPlacement?: 'start' | 'top' | 'bottom' | 'end';
   disabled?: boolean;
-  checked?: boolean;
-  value?: string;
-  onClick?: () => void;
+  options: RadioOption[];
   color?: 'default' | 'primary' | 'secondary';
+  classes?: string;
+  onClick?: (value: unknown) => void;
+  flowDirection?: 'row' | 'column';
 };
 
 function Radio({
-  label,
+  labelPlacement = 'end',
   disabled,
-  checked,
-  value,
-  onClick,
+  options,
   color,
-  ...rest
+  classes,
+  onClick,
+  flowDirection = 'row',
 }: Readonly<Props>) {
   return (
-    <>
-      <SRadio
-        disabled={disabled}
-        checked={checked}
-        value={value}
-        onClick={onClick}
-        color={color}
-        {...rest}
-      />
-      <span>{label}</span>
-    </>
+    <FormControl>
+      <SRadioGroup sx={{ flexDirection: flowDirection }}>
+        {options.map((option) => (
+          <FormControlLabel
+            value={option.value}
+            control={
+              <SRadio
+                disabled={disabled}
+                checked={option.checked === true || false}
+                onClick={() => onClick && onClick(option.value)}
+                color={color}
+                class={classes}
+              />
+            }
+            label={option.label}
+            labelPlacement={labelPlacement}
+          />
+        ))}
+      </SRadioGroup>
+    </FormControl>
   );
 }
 
