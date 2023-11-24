@@ -54,8 +54,6 @@ const Order = () => {
 
                 <LoadInformation />
 
-                <DriverAndTruckDetails />
-
                 <AdditionalLoadDetails />
 
                 <CarrierInstructions />
