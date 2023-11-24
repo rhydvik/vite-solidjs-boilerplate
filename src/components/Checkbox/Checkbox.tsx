@@ -21,6 +21,9 @@ function Checkbox({
   return (
     <FormControlLabel
       label={label}
+      sx={{
+        whiteSpace: 'nowrap',
+      }}
       control={
         <SCheckbox
           disabled={disabled}
