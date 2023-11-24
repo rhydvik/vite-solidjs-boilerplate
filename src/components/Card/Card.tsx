@@ -99,8 +99,8 @@ export default function Card({
       ></CardHeader>
       <CardContent
         sx={{
-          overflow: 'hidden',
           display: isExpanded() ? 'block' : 'none',
+          ...cardStyles.cardContent,
         }}
       >
         {children}

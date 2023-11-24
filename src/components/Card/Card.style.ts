@@ -6,11 +6,17 @@ export const cardStyles = {
     marginBottom: '20px',
   },
   cardHeader: {
-    backgroundColor: '#026EA1',
-    padding: '10px 16px',
-    borderRadius: '10px 10px 0px 0px',
+    borderRadius: '10px 10px var(--none, 0px) var(--none, 0px)',
+    background: '#026EA1',
     color: 'white',
     cursor: 'pointer',
+    padding: '10px var(--2, 16px)',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  cardContent: {
+    overflow: 'hidden',
+    color: 'black',
   },
   gridItem: {
     fontSize: '1rem',
