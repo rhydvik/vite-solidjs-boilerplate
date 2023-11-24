@@ -6,7 +6,7 @@ import cls, { colors } from './classes';
 
 interface NotificationProps {
   type: 'warning' | 'info' | 'error';
-  children: JSX.Element;
+  children: JSX.Element | string;
 }
 
 const iconMap = {
@@ -19,7 +19,10 @@ const Notification = (props: NotificationProps): JSX.Element => {
   const selectedIcon = iconMap[props.type];
 
   return (
-    <Grid class={`${cls.container} ${cls[props.type]}`}>
+    <Grid
+      class={`${cls.container} ${cls[props.type]}`}
+      sx={{ boxShadow: '0px 8px 5px rgba(0, 0, 0, 0.16)' }}
+    >
       <div class={cls.icon}>{selectedIcon}</div>
       <div>{props.children}</div>
     </Grid>

@@ -15,6 +15,7 @@ import {
   Stops,
   CarrierPayments,
 } from './components';
+import { CargoValue } from './components/cargoValue';
 
 const Order = () => {
   return (
@@ -63,6 +64,8 @@ const Order = () => {
 
                 <Stops />
                 <Tracking />
+                <CargoValue />
+                <DriverAndTruckDetails />
               </div>
             </Grid>
           </Grid>

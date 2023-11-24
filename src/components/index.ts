@@ -8,4 +8,5 @@ export * from './Card';
 export * from './Notification';
 export * from './LTLQuote';
 export * from './BasicTable';
+export * from './Radio';
 export * from './TextField';
