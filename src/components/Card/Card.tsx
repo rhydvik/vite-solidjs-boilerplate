@@ -48,7 +48,6 @@ export default function Card({
   return (
     <MuiCard raised={raised} sx={cardStyles.card}>
       <CardHeader
-        onClick={accordion ? handleToggle : undefined}
         sx={cardStyles.cardHeader}
         title={
           <Grid
@@ -62,6 +61,7 @@ export default function Card({
                 variant="body2"
                 component="span"
                 sx={cardStyles.accordionIcon}
+                onClick={accordion ? handleToggle : undefined}
               >
                 {accordion &&
                   (isExpanded() ? (
