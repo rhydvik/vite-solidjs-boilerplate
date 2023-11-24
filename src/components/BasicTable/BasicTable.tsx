@@ -45,6 +45,7 @@ export interface Props {
   column: Column[];
   rows: Row[];
   footerRow?: FooterType[];
+  footerBorder?: boolean;
 }
 
 export const BasicTable: Component<Props> = (props) => {
@@ -81,6 +82,10 @@ export const BasicTable: Component<Props> = (props) => {
               lineHeight: '20.02px',
               letterSpacing: '0.17px',
               color: '#000000', // use from theme
+              borderBottom:
+                props.footerBorder ?? true
+                  ? '1px solid var(--divider, rgba(0, 0, 0, 0.12))'
+                  : '0px',
             }}
           >
             {item.renderCell ? item.renderCell(item) : ''}
