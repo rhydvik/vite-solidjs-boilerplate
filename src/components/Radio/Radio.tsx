@@ -48,9 +48,9 @@ function Radio({
         {options.map((option) => (
           <FormControlLabel
             value={option.value}
+            disabled={disabled}
             control={
               <SRadio
-                disabled={disabled}
                 checked={option.checked === true || false}
                 onClick={() => onClick && onClick(option.value)}
                 color={color}

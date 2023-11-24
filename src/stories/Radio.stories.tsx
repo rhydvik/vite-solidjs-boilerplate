@@ -27,13 +27,23 @@ Checked.args = {
 
 export const VerticallyAlign = Template.bind({});
 VerticallyAlign.args = {
-  disabled: true,
   label: 'Vertically Align Checkbox',
   flowDirection: 'column',
   options: [
     { label: 'Option 1', value: '1' },
     { label: 'Option 2', value: '2', checked: true },
     { label: 'Option 3', value: '3' },
+  ],
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+  label: 'Disabled Checkbox',
+  flowDirection: 'column',
+  options: [
+    { label: 'Not Disabled', value: '1' },
+    { label: 'Disabled', value: '2', checked: true },
   ],
 };
 
