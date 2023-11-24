@@ -1,12 +1,11 @@
-import { Card } from '../../../../components';
+import { Card, Notification } from '../../../../components';
 
 export const DriverAndTruckDetails = () => {
   return (
-    <Card
-      startTitle="Driver and Truck Details"
-      expanded={true}
-      accordion={true}
-    >
+    <Card startTitle="Driver and Truck Details">
+      <Notification type="warning">
+        This customer requires tracking.
+      </Notification>
       <div class="p-4">
         <div>Comments</div>
         <div>Mooslookmeguntic, ME</div>

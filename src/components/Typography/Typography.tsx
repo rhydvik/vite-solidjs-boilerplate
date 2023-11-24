@@ -35,6 +35,7 @@ export const Typography = ({
     <STypography
       variant={variant}
       component={component}
+      gpl
       sx={sxProps}
       {...restProps}
     >
