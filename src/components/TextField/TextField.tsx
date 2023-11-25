@@ -1,9 +1,9 @@
-import { TextField as STextField } from '@suid/material';
-import InputAdornment from '@suid/material/InputAdornment';
+import { TextField as STextField, InputAdornment } from '@suid/material';
 
 export type Props = {
   variant: 'standard' | 'outlined' | 'filled';
   label: string;
+  placeholder?: string;
   id: string;
   required?: boolean;
   disabled?: boolean;
@@ -13,14 +13,17 @@ export type Props = {
   helperText?: string;
   multiline?: boolean;
   rows?: number;
-  InputAdornmentPostion?: 'start' | 'end';
+  InputAdornmentPosition?: 'start' | 'end';
   InputAdornmentText?: string;
   startAdornmentFlag?: boolean;
+  classes?: string;
+  size?: 'small' | string;
 };
 
 function TextField({
   variant,
   label,
+  placeholder,
   id,
   required,
   disabled,
@@ -29,9 +32,12 @@ function TextField({
   error,
   multiline = false,
   rows,
-  InputAdornmentPostion,
+  InputAdornmentPosition,
   startAdornmentFlag = false,
   InputAdornmentText,
+  classes,
+  size = 'small',
+  ...rest
 }: Props) {
   return (
     <STextField
@@ -41,20 +47,21 @@ function TextField({
       required={required}
       disabled={disabled}
       type={type}
+      placeholder={placeholder}
       error={error}
       helperText={helperText}
       multiline={multiline}
       rows={multiline ? rows : 0}
-      InputLabelProps={{
-        shrink: type === 'number',
-      }}
+      class={classes}
+      size={size}
       InputProps={{
         startAdornment: startAdornmentFlag ? (
-          <InputAdornment position={InputAdornmentPostion}>
+          <InputAdornment position={InputAdornmentPosition}>
             {InputAdornmentText}
           </InputAdornment>
         ) : null,
       }}
+      {...rest}
     />
   );
 }

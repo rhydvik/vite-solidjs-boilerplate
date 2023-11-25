@@ -27,7 +27,7 @@ const Order = () => {
       <div class="flex-1 overflow-y-auto p-4">
         <div class="bg-white p-4">
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <div class="">
                 <CustomerInformation />
 
@@ -38,7 +38,7 @@ const Order = () => {
                 <PreviousNotes />
               </div>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <div class="rounded shadow p-4">
                 <Notification type="warning">
                   <p class="text-sm">
@@ -53,8 +53,6 @@ const Order = () => {
                 </Notification>
 
                 <LoadInformation />
-
-                <DriverAndTruckDetails />
 
                 <AdditionalLoadDetails />
 

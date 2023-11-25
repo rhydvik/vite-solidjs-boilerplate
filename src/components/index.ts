@@ -11,4 +11,5 @@ export * from './BasicTable';
 export * from './IconLabel';
 export * from './Radio';
 export * from './TextField';
+export * from './Checkbox';
 export * from './Link';

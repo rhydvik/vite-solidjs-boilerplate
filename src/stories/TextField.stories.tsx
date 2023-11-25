@@ -12,26 +12,10 @@ const Template: (
   args: JSX.ButtonHTMLAttributes<HTMLButtonElement> & { children: JSX.Element },
 ) => JSX.Element = (args) => <TextField {...args} />;
 
-// Create the actual stories
 export const Primary = Template.bind({});
 Primary.args = {
-  variant: 'filled',
-  label: 'Primary Text Field',
-  required: true,
-  disabled: true,
-  helperText: 'some help text',
-  error: true,
-  multiline: true,
-  rows: 3,
-  startAdornmentFlag: true,
-  InputAdornmentPostion: 'start',
-  InputAdornmentText: 'kg',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
   variant: 'outlined',
-  label: 'Secondary Text Field',
+  label: 'Primary Text Field',
   required: false,
   disabled: false,
   helperText: 'some help text',
@@ -41,4 +25,28 @@ Secondary.args = {
   startAdornmentFlag: false,
   InputAdornmentPostion: 'start',
   InputAdornmentText: 'ltr',
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  variant: 'filled',
+  label: 'Secondary Text Field',
+  required: true,
+  disabled: false,
+  helperText: 'some help text',
+  error: false,
+  multiline: false,
+  rows: 1,
+};
+
+export const Standard = Template.bind({});
+Standard.args = {
+  variant: 'standard',
+  label: 'Standard Text Field',
+  required: true,
+  disabled: false,
+  helperText: 'some help text',
+  error: false,
+  multiline: false,
+  rows: 1,
 };
