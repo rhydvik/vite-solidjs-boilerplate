@@ -1,10 +1,17 @@
 import { A } from '@solidjs/router';
-import { createEffect, createSignal } from 'solid-js';
+import { Match, Suspense, Switch, createEffect, createSignal } from 'solid-js';
 import { Grid } from '@suid/material';
 
 import { printLog } from '../../utils/utils';
 import { OrderPageHeader } from '../order/components/orderPageHeader/OrderPageHeader';
-import { BasicModal, Button, Notification, LTLQuote } from '../../components';
+import {
+  BasicModal,
+  Button,
+  Notification,
+  LTLQuote,
+  Card,
+  TabsComponent,
+} from '../../components';
 
 type Office = {
   name: string;
@@ -15,6 +22,7 @@ export default function Offices() {
   const [data, setData] = createSignal<Office[]>([]);
   const [loading, setLoading] = createSignal(true);
   const [showModal, setShowModal] = createSignal(false);
+  const [activeTab, updateActiveTab] = createSignal(0);
 
   const toggleModel = () => {
     printLog('toggleModel');
@@ -27,8 +35,8 @@ export default function Offices() {
       const result = (await response.json()) as { offices: Office[] | [] };
       setData(result.offices);
       setLoading(false);
-    } catch (err) {
-      printLog('Error fetching data', err);
+    } catch (err: unknown) {
+      printLog('Error fetching data');
       setLoading(false);
     }
   }
@@ -43,20 +51,14 @@ export default function Offices() {
       {}
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <Card
-            startTitle="Card Info"
-            endTitle="Filter Date"
-            content="Hello"
-            raised
-          />
+          <Card startTitle="Card Info" endTitle="Filter Date" raised>
+            Card1
+          </Card>
         </Grid>
         <Grid item xs={6}>
-          <Card
-            startTitle="Card Info"
-            endTitle="Filter Date"
-            content="Hello"
-            raised
-          />
+          <Card startTitle="Card Info" endTitle="Filter Date" raised>
+            Card2
+          </Card>
         </Grid>
       </Grid>
       <h1>Offices</h1>
@@ -79,10 +81,41 @@ export default function Offices() {
           open={true}
           title="Modal Title"
           handleClose={() => toggleModel()}
-        />
+        >
+          <div>Modal Content</div>
+        </BasicModal>
       )}
       <Notification type="warning">Warning Message</Notification>
       <LTLQuote />
+      <TabsComponent
+        activeTab={activeTab()}
+        tabs={[
+          'asd',
+          'asddd',
+          'sssssss',
+          'akash',
+          'pandey',
+          'new Boyua',
+          'asdsd asds',
+        ]}
+        onTabClick={(index: number) => updateActiveTab(index)}
+      />
+      <Suspense fallback={<div class="loader">Loading...</div>}>
+        <Switch>
+          <Match when={activeTab() === 0}>
+            <div>Tab 0</div>
+          </Match>
+          <Match when={activeTab() === 1}>
+            <div>Tab 1</div>
+          </Match>
+          <Match when={activeTab() === 2}>
+            <div>Tab 3</div>
+          </Match>
+          <Match when={activeTab() > 2}>
+            <div>Tab 4+</div>
+          </Match>
+        </Switch>
+      </Suspense>
     </div>
   );
 }
