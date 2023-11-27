@@ -1,8 +1,7 @@
-import { createSignal, onCleanup, onMount } from 'solid-js';
+import { JSX, createSignal, onMount } from 'solid-js';
 import { ChevronLeft, ChevronRight } from '@suid/icons-material';
-/*eslint-disable */
 interface TabsComponentProps {
-  tabs: Array<string>;
+  tabs: Array<string> | Array<JSX.Element>;
   activeTab: number;
   onTabClick: (index: number) => void;
 }
@@ -11,69 +10,79 @@ const TabsComponent = (props: TabsComponentProps) => {
   let contentRef: HTMLDivElement | undefined;
   const [showLeftButton, setShowLeftButton] = createSignal(false);
   const [showRightButton, setShowRightButton] = createSignal(false);
-  console.log(props.activeTab === 0 ? "border-blue-600" : "ss");
+
   const scrollLeft = () => {
-    const content: any = contentRef;
-    if (content) {
-      content.scrollLeft -= 50;
+    if (!showLeftButton()) return;
+    if (containerRef) {
+      containerRef.scrollTo({
+        left: containerRef.scrollLeft - 500,
+        behavior: 'smooth',
+      });
     }
   };
 
   const scrollRight = () => {
-    const content: any = contentRef;
-    console.log(content.scrollLeft);
+    if (!showRightButton()) return;
     if (containerRef) {
-      containerRef.scrollLeft += 50;
+      containerRef.scrollTo({
+        left: containerRef.scrollLeft + 500,
+        behavior: 'smooth',
+      });
     }
   };
-
-  onCleanup(() => {});
 
   const checkOverflow = () => {
-    const container: any = containerRef;
-    const content: any = contentRef;
-    console.log(container, content);
-    if (container && content) {
-      setShowLeftButton(content.scrollLeft > 0);
-      setShowRightButton(
-        content.scrollLeft + container.clientWidth < content.scrollWidth,
-      );
+    if (containerRef && contentRef) {
+      const isScrolledToLeft = containerRef.scrollLeft === 0;
+      const isScrolledToRight =
+        containerRef.scrollLeft + containerRef.clientWidth >=
+        contentRef.scrollWidth - 1;
+
+      setShowLeftButton(!isScrolledToLeft);
+      setShowRightButton(!isScrolledToRight);
     }
   };
 
-  // Update overflow visibility on content change or resize
   onMount(() => {
-    checkOverflow(); // Check overflow initially
+    checkOverflow();
 
     const handleUpdate = () => {
-      checkOverflow(); // Update overflow visibility on scroll or resize
+      checkOverflow();
     };
 
-    if (contentRef) {
-      contentRef.addEventListener("scroll", handleUpdate);
+    if (containerRef) {
+      containerRef.addEventListener('scroll', handleUpdate);
     }
 
     return () => {
-      // Cleanup function to remove event listener on component unmount
-      if (contentRef) {
-        contentRef.removeEventListener("scroll", handleUpdate);
+      if (containerRef) {
+        containerRef.removeEventListener('scroll', handleUpdate);
       }
     };
   });
 
   return (
     <div class="flex items-center relative">
-      {showLeftButton() && (
-        <div class="absolute left-0 z-10" onClick={scrollLeft}>
-          <ChevronLeft />
-        </div>
-      )}
-      <div class="flex overflow-x-auto" ref={containerRef}>
-        <div class="tabs-content flex" ref={contentRef}>
+      <div
+        class="left-0 z-10"
+        onClick={() => scrollLeft()}
+        style={{
+          color: showLeftButton() ? 'black' : 'grey',
+          'pointer-events': showLeftButton() ? 'auto' : 'none',
+          cursor: showLeftButton() ? 'pointer' : '',
+        }}
+      >
+        <ChevronLeft />
+      </div>
+      <div
+        class="flex overflow-x-auto no-scrollbar w-[100%] px-4"
+        ref={containerRef}
+      >
+        <div class="tabs-content flex w-[100%]" ref={contentRef}>
           {props.tabs.map((tab, index) => (
             <div
-              class={`flex flex-col items-center justify-center cursor-pointer border-b-2 min-w-[200px] ${
-                props.activeTab === index ? "border-blue-600" : ""
+              class={`flex flex-1 flex-col items-center justify-center cursor-pointer border-b-2  min-w-[150px] ${
+                props.activeTab === index ? 'border-blue-600' : ''
               }`}
               onClick={() => props.onTabClick(index)}
             >
@@ -83,11 +92,17 @@ const TabsComponent = (props: TabsComponentProps) => {
           ))}
         </div>
       </div>
-      {showRightButton() && (
-        <div class="absolute right-0 z-10" onClick={scrollRight}>
-          <ChevronRight />
-        </div>
-      )}
+      <div
+        class=" right-0 z-10"
+        onClick={scrollRight}
+        style={{
+          color: showRightButton() ? 'black' : 'grey',
+          'pointer-events': showRightButton() ? 'auto' : 'none',
+          cursor: showRightButton() ? 'pointer' : '',
+        }}
+      >
+        <ChevronRight />
+      </div>
     </div>
   );
 };

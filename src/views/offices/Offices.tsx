@@ -90,13 +90,14 @@ export default function Offices() {
       <TabsComponent
         activeTab={activeTab()}
         tabs={[
-          'asd',
+          'CROSS COUNTRY FREIGHT SERVICE INC.$2,1500.00',
           'asddd',
           'sssssss',
           'akash',
           'pandey',
-          'new Boyua',
-          'asdsd asds',
+          'shaktiman',
+          'ssssssss',
+          'ssssdffsfs',
         ]}
         onTabClick={(index: number) => updateActiveTab(index)}
       />
