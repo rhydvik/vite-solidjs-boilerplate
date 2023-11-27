@@ -14,3 +14,4 @@ export * from './TextField';
 export * from './Checkbox';
 export * from './Link';
 export * from './RichTextEditor';
+export * from './TabsComponent';
