@@ -13,3 +13,4 @@ export * from './Radio';
 export * from './TextField';
 export * from './Checkbox';
 export * from './Link';
+export * from './RichTextEditor';
