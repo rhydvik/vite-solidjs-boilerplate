@@ -5,6 +5,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    require('@tailwindcss/typography'),
     function ({ addUtilities }) {
       const newUtilities = {
         '.no-scrollbar::-webkit-scrollbar': {
