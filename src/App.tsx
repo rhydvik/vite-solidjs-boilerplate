@@ -9,6 +9,7 @@ import {
   OfficeRoute,
   OrderRoute,
   SolidRoute,
+  LoadboardRoute,
 } from './views';
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
   SolidRoute,
   GlobalRoute,
   OrderRoute,
+  LoadboardRoute,
 ];
 
 function App() {
