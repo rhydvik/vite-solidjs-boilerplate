@@ -1,5 +1,5 @@
 import { Layout } from '../../layouts/Main';
-import Global from './global';
+import Global from './Global';
 
 export const GlobalRoute = {
   path: '/global',
