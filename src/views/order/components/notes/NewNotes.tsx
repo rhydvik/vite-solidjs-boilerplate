@@ -1,7 +1,11 @@
-export const NewNotes = () => {
+import { Card, RichTextEditor } from '../../../../components';
+
+export const NewATGOnlyNote = () => {
   return (
-    <div>
-      <h1>NewNotes</h1>
-    </div>
+    <Card startTitle="New ATG Only Note">
+      <div class="p-2">
+        <RichTextEditor content={'<strong><p>Hello</p><p>World</p></strong>'} />
+      </div>
+    </Card>
   );
 };

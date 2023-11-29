@@ -15,7 +15,7 @@ export type Row = Record<string, string>;
 export type Column = {
   name: string;
   key: string;
-  renderCell?: (arg?: Row) => string | JSXElement;
+  renderCell?: (arg: Row) => string | JSXElement;
   minWidth?: number;
   textAlign?:
     | 'start'
@@ -44,7 +44,8 @@ export type FooterType = {
 export interface Props {
   column: Column[];
   rows: Row[];
-  footerRow: FooterType[];
+  footerRow?: FooterType[];
+  footerBorder?: boolean;
 }
 
 export const BasicTable: Component<Props> = (props) => {
@@ -54,8 +55,6 @@ export const BasicTable: Component<Props> = (props) => {
         {(item) => (
           <TableCell
             sx={{
-              textAlign: item.textAlign ? item.textAlign : 'left',
-              minWidth: item.minWidth ?? item.minWidth,
               fontSize: 14,
               fontStyle: 'normal',
               fontWeight: 500,
@@ -77,14 +76,16 @@ export const BasicTable: Component<Props> = (props) => {
         {(item) => (
           <TableCell
             sx={{
-              textAlign: item.textAlign ? item.textAlign : 'left',
-              minWidth: item.minWidth ?? item.minWidth,
               fontSize: 14,
               fontStyle: 'normal',
               fontWeight: 700,
               lineHeight: '20.02px',
               letterSpacing: '0.17px',
               color: '#000000', // use from theme
+              borderBottom:
+                props.footerBorder ?? true
+                  ? '1px solid var(--divider, rgba(0, 0, 0, 0.12))'
+                  : '0px',
             }}
           >
             {item.renderCell ? item.renderCell(item) : ''}
@@ -140,9 +141,11 @@ export const BasicTable: Component<Props> = (props) => {
             )}
           </For>
         </TableBody>
-        <TableFooter>
-          <TableRow>{footers(props.footerRow)}</TableRow>
-        </TableFooter>
+        {props.footerRow && (
+          <TableFooter>
+            <TableRow>{footers(props.footerRow)}</TableRow>
+          </TableFooter>
+        )}
       </Table>
     </TableContainer>
   );

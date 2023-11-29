@@ -30,6 +30,7 @@
     "@storybook/addon-links": "^7.5.1",
     "@storybook/blocks": "^7.5.1",
     "@storybook/testing-library": "^0.2.2",
+    "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.1.4",
     "@types/axios": "^0.14.0",
     "@types/node": "^20.8.10",
@@ -71,9 +72,21 @@
     "@suid/icons-material": "^0.6.11",
     "@suid/material": "^0.15.1",
     "@suid/vite-plugin": "^0.1.5",
+    "@tiptap/core": "^2.1.12",
+    "@tiptap/extension-image": "^2.1.12",
+    "@tiptap/extension-placeholder": "^2.1.12",
+    "@tiptap/extension-task-item": "^2.1.12",
+    "@tiptap/extension-task-list": "^2.1.12",
+    "@tiptap/extension-underline": "^2.1.12",
+    "@tiptap/pm": "^2.1.12",
+    "@tiptap/starter-kit": "^2.1.12",
+    "ag-grid-community": "^30.2.1",
+    "ag-grid-solid": "^30.2.1",
     "axios": "^1.6.0",
     "chromatic": "^9.1.0",
     "miragejs": "^0.1.47",
-    "solid-js": "^1.7.6"
+    "solid-headless": "^0.13.1",
+    "solid-js": "^1.7.6",
+    "solid-tiptap": "^0.6.0"
   }
 }

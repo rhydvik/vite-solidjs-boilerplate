@@ -1,0 +1,36 @@
+/* Global CSS Related to RichTextEditor Only */
+
+
+.rich-text :where(p,ol,ul,li,div):not(:where([class~="not-prose"],[class~="not-prose"] *)){
+  margin: 0;
+}
+
+.rich-text .image-class{
+  margin: 20px  0;
+}
+
+ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+}
+ul[data-type="taskList"] p {
+  margin: 0;
+}
+ul[data-type="taskList"] li {
+  display: flex;
+}
+ul[data-type="taskList"] li > label {
+  flex: 0 0 auto;
+  user-select: none;
+  margin: 0;
+  margin-right: 0.5rem;
+}
+ul[data-type="taskList"] li > div {
+  flex: 1 1 auto;
+}
+ul[data-type="taskList"] li ul li, ul[data-type="taskList"] li ol li {
+  display: list-item;
+}
+ul[data-type="taskList"] li ul[data-type="taskList"] > li {
+  display: flex;
+}

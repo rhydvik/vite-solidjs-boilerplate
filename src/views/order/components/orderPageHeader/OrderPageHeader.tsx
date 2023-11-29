@@ -1,7 +1,7 @@
 import { Box } from '@suid/material';
 import { ArrowDropDown } from '@suid/icons-material';
 
-import { Button, PageHeader, Typography } from '../../../components';
+import { Button, PageHeader, Typography } from '../../../../components';
 
 const buttonStyle = { mr: 4, pt: 0, pb: 0 };
 

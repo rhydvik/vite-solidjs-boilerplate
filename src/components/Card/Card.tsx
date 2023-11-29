@@ -1,14 +1,29 @@
-import { Card as MuiCard, CardContent, CardHeader, Grid } from '@suid/material';
-import { JSX } from 'solid-js';
+import {
+  Card as MuiCard,
+  CardContent,
+  CardHeader,
+  Typography,
+  Grid,
+} from '@suid/material';
+import {
+  PlayCircleOutlineOutlined,
+  ArrowDropDownCircleOutlined,
+} from '@suid/icons-material';
+import { JSX, createSignal } from 'solid-js';
+
+import { cardStyles } from './Card.style';
 
 export interface Props {
-  startTitle: string;
-  endTitle: string;
+  startTitle?: string;
+  endTitle?: string;
   startIcon?: JSX.Element;
   endIcon?: JSX.Element;
-  raised: boolean;
+  children: JSX.Element | string;
+  raised?: boolean;
   action?: JSX.Element;
-  children: JSX.Element;
+  accordion?: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
 }
 
 export default function Card({
@@ -19,23 +34,21 @@ export default function Card({
   children,
   raised,
   action,
+  accordion = true,
+  expanded = true,
+  onToggle,
 }: Readonly<Props>) {
+  const [isExpanded, setIsExpanded] = createSignal(accordion ? expanded : true);
+
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded());
+    onToggle && onToggle();
+  };
+
   return (
-    <MuiCard
-      raised={raised}
-      sx={{
-        boxShadow: '0px 2px 5px gray',
-        borderRadius: '10px',
-        color: 'white',
-      }}
-    >
+    <MuiCard raised={raised} sx={cardStyles.card}>
       <CardHeader
-        sx={{
-          backgroundColor: '#026EA1',
-          padding: '10px 16px',
-          borderRadius: '10px 10px 0px 0px',
-          color: 'white',
-        }}
+        sx={cardStyles.cardHeader}
         title={
           <Grid
             container
@@ -43,19 +56,55 @@ export default function Card({
             justifyContent="space-between"
             alignItems="center"
           >
-            <Grid item sx={{ fontSize: '1rem' }}>
-              <span style={{ 'margin-right': '6px' }}>{startIcon}</span>
-              <span>{startTitle}</span>
+            <Grid item sx={cardStyles.gridItem}>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.accordionIcon}
+                onClick={accordion ? handleToggle : undefined}
+              >
+                {accordion &&
+                  (isExpanded() ? (
+                    <ArrowDropDownCircleOutlined />
+                  ) : (
+                    <PlayCircleOutlineOutlined />
+                  ))}
+              </Typography>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.startIcon}
+              >
+                {startIcon}
+              </Typography>
+              <Typography variant="body2" component="span">
+                {startTitle}
+              </Typography>
             </Grid>
-            <Grid item sx={{ fontSize: '1rem' }}>
-              <span>{endTitle}</span>
-              <span style={{ 'margin-left': '6px' }}>{endIcon}</span>
+            <Grid item sx={cardStyles.gridItem}>
+              <Typography variant="body2" component="span">
+                {endTitle}
+              </Typography>
+              <Typography
+                variant="body2"
+                component="span"
+                sx={cardStyles.endIcon}
+              >
+                {endIcon}
+              </Typography>
             </Grid>
           </Grid>
         }
         action={action}
       ></CardHeader>
-      <CardContent sx={{ minHeight: 400 }}>{children}</CardContent>
+      <CardContent
+        sx={{
+          display: isExpanded() ? 'block' : 'none',
+          ...cardStyles.cardContent,
+        }}
+      >
+        {children}
+      </CardContent>
     </MuiCard>
   );
 }

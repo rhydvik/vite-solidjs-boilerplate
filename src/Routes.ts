@@ -8,6 +8,8 @@ import {
   SolidRoute,
   SignInRoutes,
   NotFoundRoutes,
+  OrderRoute,
+  LoadboardRoute,
 } from './views';
 import { createRoutes } from './utils/routeUtils';
 
@@ -21,6 +23,8 @@ export const RouteWrapper = () => {
     HomeRoute,
     OfficeRoute,
     SolidRoute,
+    OrderRoute,
+    LoadboardRoute,
   ];
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
