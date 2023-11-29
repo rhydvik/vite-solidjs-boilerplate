@@ -6,6 +6,8 @@
 
 import { lazy, JSX } from 'solid-js';
 
+import { Layout } from '../../layouts/Main';
+
 // below will load office when we go to office route
 const Offices = lazy(
   () => import('./Offices') as Promise<{ default: () => JSX.Element }>,
@@ -14,6 +16,7 @@ const Offices = lazy(
 const OfficeRoute = {
   path: '/offices',
   component: Offices,
+  layout: Layout,
 };
 
 export { Offices, OfficeRoute };

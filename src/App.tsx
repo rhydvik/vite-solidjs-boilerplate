@@ -1,29 +1,11 @@
-import { Router, useRoutes } from '@solidjs/router';
+import { Router } from '@solidjs/router';
 import { ThemeProvider } from '@suid/material';
 
 import theme from './utils/theme';
-import {
-  CarrierRoute,
-  GlobalRoute,
-  HomeRoute,
-  OfficeRoute,
-  OrderRoute,
-  SolidRoute,
-  LoadboardRoute,
-} from './views';
-
-const routes = [
-  HomeRoute,
-  OfficeRoute,
-  CarrierRoute,
-  SolidRoute,
-  GlobalRoute,
-  OrderRoute,
-  LoadboardRoute,
-];
+import { RouteWrapper } from './Routes';
 
 function App() {
-  const RoutesComponent = useRoutes(routes);
+  const RoutesComponent = RouteWrapper();
   return (
     <ThemeProvider theme={theme}>
       <Router>

@@ -1,4 +1,4 @@
-import { JSX } from 'solid-js';
+import { JSX, children } from 'solid-js';
 
 import { Header, Sidebar } from '../../components';
 import cls from './classes';
@@ -7,7 +7,8 @@ type Props = {
   children: JSX.Element;
 };
 
-const Layout = ({ children }: Props) => {
+const Layout = (props: Props) => {
+  const renderChildren = children(() => props.children);
   return (
     <div class={cls.container}>
       <div class={cls.header} style={cls.headerHeight}>
@@ -18,7 +19,7 @@ const Layout = ({ children }: Props) => {
           <div class={cls.sidebar}>
             <Sidebar />
           </div>
-          <div class={cls.childrenContainer}>{children}</div>
+          <div class={cls.childrenContainer}>{renderChildren()}</div>
         </div>
       </div>
     </div>
